@@ -1,17 +1,12 @@
 import warnings
-
 warnings.filterwarnings('ignore')
 import tensorflow as tf
-
 tf.compat.v1.logging.set_verbosity(tf.compat.v1.logging.ERROR)
 import os
 import numpy as np
 import pickle
-
 from sklearn.preprocessing import OneHotEncoder
-
 from sklearn.model_selection import train_test_split
-
 import sys
 import time
 
@@ -131,62 +126,5 @@ def tf_train(data, savepath="./",  tolerance=1e-4, max_patience=15,
         return
 
 
-
 if __name__ == "__main__":
-    print("to implement")
-    # args = sys.argv
-    # if args[1] == "Calpha_iters":
-    #     system = args[2]
-    #     task_name = args[3]
-    #     subset = int(args[4])
-    #     subsets = [subset]
-    # elif args[1] == "Calpha_iters_multiple_subset":
-    #     system = args[2]
-    #     task_name = args[3]
-    #     dataset_name = args[4]
-    #     begin_subset = int(args[5])
-    #     end_subset = int(args[6])
-    #     subsets = list(range(begin_subset, end_subset + 1))
-    # for subset in subsets:
-    #     data_path = "MLdata/" + system + "/" + dataset_name + "/subset_{:03d}.bin".format(subset)
-    #     model_save_folder = "MLmodels/" + system + "/" + task_name + "/"
-    #     cheatsheet_path = "MLdata/" + system + "/" + dataset_name + "/cheatsheet_set1_hankang.dat"
-    #     print("tensorflow training info log")
-    #     print("system", system, " task name", task_name, "subset", subset)
-    #     print("loading data from ", data_path)
-    #     print("loading cheatsheet from ", cheatsheet_path)
-    #     print("save models to", model_save_folder)
-    #     x, y = dm.get_data_integrated(data_size=0.4, begin_set=1, end_set=1, latter_cut_percentage=0.5,
-    #                                   data_path=data_path, cheatsheet_path=cheatsheet_path, opt='equilibrium')
-    #     print(x.shape)
-    #     y = np.reshape(y, (len(y), 1))
-    #     encoder = OneHotEncoder()
-    #     encoder.fit(y)
-    #     y = encoder.transform(y).toarray()
-    #     print(y.shape)
-    #     extra_info = {}
-    #     dataV_path = "MLdata/" + system + "/" + dataset_name + "/subset_{:03d}_validation.bin".format(subset)
-    #     cheatsheetV_path = "MLdata/" + system + "/" + dataset_name + "/cheatsheet_set1_validation.dat"
-    #     x_V, y_V = dm.get_data_integrated(data_size=0.4, begin_set=1, end_set=1, latter_cut_percentage=0.5,
-    #                                       data_path=dataV_path, cheatsheet_path=cheatsheetV_path, opt='equilibrium')
-    #     y_V = np.reshape(y_V, (len(y_V), 1))
-    #     encoder = OneHotEncoder()
-    #     encoder.fit(y_V)
-    #     y_V = encoder.transform(y_V).toarray()
-    #     extra_info["x_V"] = x_V
-    #     extra_info["y_V"] = y_V
-    #     models_directory = model_save_folder + "models_subset_{:03d}/".format(subset)
-    #     extra_info['directory'] = models_directory
-    #     if not os.path.exists(models_directory):
-    #         print("create model folder", models_directory)
-    #         os.makedirs(models_directory, exist_ok=True)
-    #     if len(os.listdir(models_directory)) >= 50:
-    #         print("enough models in ", models_directory)
-    #         continue
-    #     for i in range(50 - len(os.listdir(models_directory))):
-    #         x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.3)
-    #         accuracy_train, accuracy_test, loss_list = tf_train(x_train, y_train, x_test, y_test, i, extra_info)
-    #         # have a better model plot its accuracy and loss graph
-    #         # if (accuracy_test[-1] > best_accuracy):
-    #         #     best_accuracy = accuracy_test[-1]
-    #         #     draw_figure(accuracy_train,accuracy_test,loss_list)
+    print()

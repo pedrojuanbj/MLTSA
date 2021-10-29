@@ -269,8 +269,8 @@ class dataset:
             Y[n * frames:n * frames + frames] = tmp_ans
 
         if mode == "Normal":
-            X = X[:, :-1]
-        else:
             pass
+        else:
+            X = X[:, :-1]
 
         return X, Y
