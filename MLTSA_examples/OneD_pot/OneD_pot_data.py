@@ -6,23 +6,32 @@ import random
 import itertools
 import time
 
-'''Common functions that can be imported '''
+'''
 
-'''Potential Class definition'''
+Common functions that can be imported 
+
+Potential Class definition
+
+'''
 
 class potentials:
+    """
+
+    Class for potentials generation
+
+    """
     def __init__(self, n_pots, n_dw, relevant_feat):
         """
         When this class initializes we automatically define the values for the different potentials
 
         :param n_pots: (int) Total number of potentials to define. n_dw will determine how many of each (DW or SW)
         :param n_dw: (int) Number of Double Well (DW) potentials desired in the dataset, up to the n_pots
-        the rest of potentials will be Single Well (SW). This cannot be bigger than n_pots.
+            the rest of potentials will be Single Well (SW). This cannot be bigger than n_pots.
         :param relevant_feat: (int) Index of the DW potential which will be our relevant feature for the outcome
-        of the simulations. This has to be between 0 and n_pots.
+            of the simulations. This has to be between 0 and n_pots.
+
         """
         dw_pot = np.random.randint(low=0, high=n_pots, size=n_dw)
-        """ GENERATING POTENTIALS """
         pots, shape = self.DefinePotentials(n_pots, dw_pot, plot=False)
 
         self.n_dw = n_dw
@@ -39,11 +48,13 @@ class potentials:
         """
         This function generates the potential requested. Depending on the type and the number of bins as well as the
         range of values that can be used.
+
         :param name: (str) Type of potential to use "double_well" for SW and "single_well" for SW.
         :param n_bins: (int) Number of bins to define the potential with.
         :param RC_range: (list) Range of values ([first, last]) to work with.
         :return: (tuple) (X, Y) it returns the different bins the potential has been defined with (X) and
-        the values over Y of the potentials.
+            the values over Y of the potentials.
+
         """
         # Create a potential on the range [0,1], rescaled afterwards to the RC wanted
         X = np.linspace(0, 1, n_bins)
@@ -71,7 +82,8 @@ class potentials:
         :param double_well_potentials: (int) Number of Double Well (DW) potentials to include in the total n_features.
         :param plot: (bool) Wether to plot (True) or not (False) the shape of the potentials.
         :return: (list) [potentials, shape] Potentials is a list of the values of the coefficients for each potential 
-        and Shape is the X/Y shape of the potentials.  
+            and Shape is the X/Y shape of the potentials.
+
         """
         potentials = {}
         shapes = []
@@ -111,13 +123,14 @@ class potentials:
         :param coeffs_derivative: (list) List of coefficients to generate trajectories on. 1
         :param start_pos: (float) starting position for each simulation. We keep this at 0.5 as the transition state. 
         :param n_steps: (int) Number of steps to run the simulation for. Note that increasing this will make longer 
-        trajectories, but changing n_steps and simul_lagtime at the same time is not recommended. Bigger n_steps will
-        yield longer (time wise) trajectories.
+            trajectories, but changing n_steps and simul_lagtime at the same time is not recommended. Bigger n_steps will
+            yield longer (time wise) trajectories.
         :param diffusion: (float) Diffusion coefficient for the langevin dynamics equation, it translates on the speed 
-        of the transitions across the free energy landscape. 
+            of the transitions across the free energy landscape.
         :param simul_lagtime: (float) Size of the steps recorded on the simulation, the bigger the less resolution the
-        coordinates will have. 
+            coordinates will have.
         :return: (list) A list containing the coordinates of the potential for the desired number of steps.
+
         """
         traj = [start_pos]
         for step_id in range(1, n_steps):
@@ -131,9 +144,11 @@ class potentials:
         """
         Small function made to label the outcome of the given simulations from a list containing them. Note that the
         values for classifying are defaulted to above or below 0.5. Change them manually if needed.
+
         :param data: (list) List of simulations it has to have the shape (n_sims, n_frames, n_potentials).
         :param relevant_feat: (int) Index of the potential that will be used for labelling the simulation.
         :return:
+
         """
         answers = []
         print("Getting simulation labels for the generated data")
@@ -154,7 +169,8 @@ class potentials:
         :param potentials: (list) Derivative coefficients for each of the potentials to run for.
         :param sim_time: (int) Number of steps/time to run the simulations for.
         :return: (list) List containing the data generated for every potential with the shape
-        of (n_simulations/n_samples, n_frames/sim_time, n_potentials).
+            of (n_simulations/n_samples, n_frames/sim_time, n_potentials).
+
         """
         print("Generating dataset")
 
@@ -176,7 +192,8 @@ class potentials:
         :param n_samples: (int) Number of simulations/samples of the potentials to run for.
         :param time: (int) number of steps/time to run for.
         :return: (list) List containing (data, answers) the first one is the simulation data for each trajectory
-        and the second one the corresponding labels for the isimulations.
+            and the second one the corresponding labels for the isimulations.
+
         """
         data_whole = self.DataGeneration(n_samples, self.potentials, time)
 
@@ -184,9 +201,13 @@ class potentials:
 
         return np.array(data_whole), np.array(ans)
 
-'''Dataset Class definition'''
 
 class dataset:
+    """
+
+    Class for the generation of datasets from a given set of potentials
+
+    """
     def __init__(self, potentials, n_feats, degree_of_mixing):
         """
         This class contains all the parameters needed to generate scrambled 1D data to use as an example on ML
@@ -194,9 +215,10 @@ class dataset:
 
         :param potentials: (list) List containing the derivative coefficients of all potentials to simulate on.
         :param n_feats: (int) Number of features to create data for, this will set up the coefficients that will be
-        needed later on.
+            needed later on.
         :param degree_of_mixing: (int) Degree of mixing for the newly generated features, 2 means a mix between
-        2 different potentials, 3 between 3, and such. Minimum it can be is 2.
+            2 different potentials, 3 between 3, and such. Minimum it can be is 2.
+
         """
 
         self.potentials = potentials
@@ -225,6 +247,7 @@ class dataset:
         :param time: (int) Amount of steps/time to run the simulations for.
         :param mode: (str) Mode on how to generate the last potential. Look at the code for more info.
         :return: (list) List containing the data (X/sim_data) and the labels (Y/answers)
+
         """
 
         data, ans = self.potentials.generate_data(n_samples, time)
@@ -238,7 +261,7 @@ class dataset:
 
         if mode == "Normal":
             pass
-        else:
+        elif mode == "Rigged":
             sim_data[:, -1, :] = data[:, self.potentials.relevant_id, :]
 
         return sim_data, ans
@@ -252,11 +275,12 @@ class dataset:
         :param data: (list) Data simulation generated from the dataset.
         :param ans: (list) Labels of the outcome from the simulations
         :param time_frame: (list) [start_frame_range, end_frame_range] Values for the range of frames/steps to keep for
-        the final data, this allows to select a particular amount from the trajectories.
+            the final data, this allows to select a particular amount from the trajectories.
         :param mode: (str) Wether to use the real value of the relevant potential as a last feature or not. "Normal"
-        means using it.
+            means using it.
         :return: (list) List containing the data as (X, Y) being X the simulation data as the mixed trajectories and
-        Y as the labelled outcomes for each frame.
+            Y as the labelled outcomes for each frame.
+
         """
         X = data[:, :, time_frame[0]: time_frame[1]]
         X = np.concatenate(X, axis=1).T
@@ -270,7 +294,7 @@ class dataset:
 
         if mode == "Normal":
             pass
-        else:
+        elif mode == "Rigged":
             X = X[:, :-1]
 
         return X, Y

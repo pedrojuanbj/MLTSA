@@ -2,9 +2,24 @@ import numpy as np
 from tqdm import tqdm
 import matplotlib.pyplot as plt
 
-def MLTSA(data, ans, model, mode):
+def MLTSA(data, ans, model, drop_mode="Median", data_mode="Normal" ):
+    """
 
-    if mode == "Normal":
+    Function to apply the Machine Learning Transition State Analysis to a given training dataset/answers and trained
+    model. It calculates the Gloabl Means and re-calculates accuracy for predicting each outcome.
+
+    :param data: Training data used for training the ML model. Must have shape (samples, features)
+    :type data: list
+    :param ans: Outcomes for each sample on "data". Shape must be (samples)
+    :type ans: list
+    :param model:
+    :param drop_mode:
+    :param data_mode:
+    :return:
+
+    """
+
+    if data_mode == "Rigged":
         data = data[:, :-1, :]
 
     # Calculating the global means
@@ -26,12 +41,30 @@ def MLTSA(data, ans, model, mode):
             res = yy == ans[y]
             mean_sim.append(res)
         FR.append(mean_sim)
-    fr_per_sim = np.mean(np.array(FR).T, axis=0)
-    fr = np.mean(fr_per_sim, axis=1)
+
+    if drop_mode == "Median":
+        median = np.median(np.array(FR), axis=0)
+        dv_from_median = [abs(M - np.array(FR)) for M in median]
+        fr = np.mean(dv_from_median, axis=0)
+
+    if drop_mode == "Average":
+        fr_per_sim = np.mean(np.array(FR).T, axis=0)
+        fr = np.mean(fr_per_sim, axis=1)
+
     return fr
 
 
 def MLTSA_Plot(FR, dataset_og, pots, errorbar=True):
+    """
+
+
+    :param FR:
+    :param dataset_og:
+    :param pots:
+    :param errorbar:
+    :return:
+
+    """
     from matplotlib.colors import LinearSegmentedColormap
     import matplotlib as mpl
     # Fetching info
@@ -81,7 +114,7 @@ def MLTSA_Plot(FR, dataset_og, pots, errorbar=True):
     plt.xlabel("#Feature")
     # plt.colorbar()
 
-    """Code for the colorbar below"""
+    #"""Code for the colorbar below"""
     #print("Plotting Colorbar")
     rgb1 = (0, 0, 1)
     rgb2 = (1, 0, 0)

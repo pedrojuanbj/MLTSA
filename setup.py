@@ -12,7 +12,7 @@ setup(
     name='MLTSA',
     version='0.0.2',
     description='Machine Learning Transition State Analysis',
-    long_description=open('README.txt').read() + '\n\n' + open('CHANGELOG.txt').read(),
+    long_description=open('README.rst').read() + '\n\n' + open('CHANGELOG.txt').read(),
     url='',
     author='Pedro Buigues',
     author_email='pedrojuanbj@gmail.com',
