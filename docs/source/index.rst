@@ -12,21 +12,21 @@ analytical model on demand for detecting relevant features in a dataset.
 
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
    :caption: Contents:
 
-   onedfunctions
+   summary.rst
 
-   sklearnfunctions
+   examples.rst
+
+   onedfunctions.rst
+
+   sklearnfunctions.rst
+
+   tffunctions.rst
+
 
 .. include:: ../../README.rst
-
-.. autosummary::
-   :toctree: _autosummary
-   :template: custom-module-template.rst
-   :recursive:
-
-   MLTSA_examples
 
 
 .. note::
