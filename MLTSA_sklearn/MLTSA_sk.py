@@ -2,7 +2,7 @@ import numpy as np
 from tqdm import tqdm
 import matplotlib.pyplot as plt
 
-def MLTSA(data, ans, model, drop_mode="Median", data_mode="Normal" ):
+def MLTSA(data, ans, model, drop_mode="Median", data_mode="Normal"):
     """
 
     Function to apply the Machine Learning Transition State Analysis to a given training dataset/answers and trained
@@ -42,10 +42,17 @@ def MLTSA(data, ans, model, drop_mode="Median", data_mode="Normal" ):
             mean_sim.append(res)
         FR.append(mean_sim)
 
+    #print(np.array(FR).shape)
+
     if drop_mode == "Median":
-        median = np.median(np.array(FR), axis=0)
-        dv_from_median = [abs(M - np.array(FR)) for M in median]
-        fr = np.mean(dv_from_median, axis=0)
+        median = np.median(np.array(FR).T, axis=0)
+        median = np.median(median, axis=0)
+        dv_from_median = []
+        for n, M in enumerate(median):
+            dv_from_median.append(abs(M - np.array(FR)[n].T))
+        fr = np.mean(np.array(dv_from_median), axis=1)
+        fr = np.mean(fr, axis=0)
+
 
     if drop_mode == "Average":
         fr_per_sim = np.mean(np.array(FR).T, axis=0)

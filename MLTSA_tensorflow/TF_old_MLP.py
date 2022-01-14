@@ -12,7 +12,7 @@ import time
 
 
 def tf_train(data, savepath="./",  tolerance=1e-4, max_patience=15,
-             batch_size=2500, hidden_nodes=100, max_epochs=500, validation=None, mode="cluster"):
+             batch_size=25, hidden_nodes=100, max_epochs=500, validation=None, mode="cluster"):
 
     if savepath[-1] != "/":
         print("ERROR ON THE SAVEPATH")
@@ -39,7 +39,8 @@ def tf_train(data, savepath="./",  tolerance=1e-4, max_patience=15,
     loss_list = []
     accuracy_validation = []
     features_num = len(x_train[0])
-    print("Training Round ")
+    print("hello")
+    print(str(features_num))
 
     # initialize graph before construct it otherwise saver will save empty graph in a loop
     graph = tf.Graph()

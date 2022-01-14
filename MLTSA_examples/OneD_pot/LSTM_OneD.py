@@ -1,9 +1,9 @@
 import numpy as np
 import matplotlib.pyplot as plt
-import MLTSA_examples.OneD_pot.OneD_pot_data as oned
+import MLTSA_datsets.OneD_pot.OneD_pot_data as oned
 from sklearn.preprocessing import OneHotEncoder
 
-import MLTSA_examples.OneD_pot.OneD_pot_data
+import MLTSA_datsets.OneD_pot.OneD_pot_data
 
 if __name__ == '__main__':
 
