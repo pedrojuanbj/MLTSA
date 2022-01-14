@@ -2,7 +2,7 @@ import numpy as np
 from tqdm import tqdm
 import matplotlib.pyplot as plt
 
-def MLTSA(data, ans, model, drop_mode="Median", data_mode="Normal"):
+def MLTSA(data, ans, model, drop_mode="Average", data_mode="Normal"):
     """
 
     Function to apply the Machine Learning Transition State Analysis to a given training dataset/answers and trained
@@ -64,11 +64,12 @@ def MLTSA(data, ans, model, drop_mode="Median", data_mode="Normal"):
 def MLTSA_Plot(FR, dataset_og, pots, errorbar=True):
     """
 
+    Wrapper for plotting the results from the Accuracy Drop procedure
 
-    :param FR:
-    :param dataset_og:
-    :param pots:
-    :param errorbar:
+    :param FR: Values from the feature reduction
+    :param dataset_og: Original dataset object class used for generating the data
+    :param pots: Original potentials object class used for generating the data
+    :param errorbar: Flag for including or not including the errobars in case of using replicas.
     :return:
 
     """
