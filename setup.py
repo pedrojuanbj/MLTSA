@@ -10,7 +10,7 @@ classifiers = [
 
 setup(
     name='MLTSA',
-    version='0.0.2',
+    version='0.0.3',
     description='Machine Learning Transition State Analysis',
     long_description=open('README.rst').read() + '\n\n' + open('CHANGELOG.txt').read(),
     url='',

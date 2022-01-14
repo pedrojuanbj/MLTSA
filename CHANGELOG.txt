@@ -1,9 +1,17 @@
 Change Log
 ============
 0.0.1 (26/10/2021)
+
 - First Release
-============
+==================
 0.0.2 (29/10/2021)
 - Fixed bugs on Notebook
 - Implemented LSTM/MLP/RNN for TensorFLow 2
 - Fixed bugs on folder naming, now the example module can be called.
+
+0.0.3 (14/01/2022)
+- Added documentation skeleton to project
+- Published documentation online at Read The Docs
+- Fixed bugs on the dataset creation/handling
+- Fixing bugs on the jupyter notebooks
+- Re-ordering datasets
