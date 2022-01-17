@@ -1,3 +1,4 @@
+
 Change Log
 ============
 0.0.1 (26/10/2021)
@@ -9,6 +10,8 @@ Change Log
 - Implemented LSTM/MLP/RNN for TensorFLow 2
 - Fixed bugs on folder naming, now the example module can be called.
 
+- Second Release
+====================
 0.0.3 (14/01/2022)
 - Added documentation skeleton to project
 - Published documentation online at Read The Docs

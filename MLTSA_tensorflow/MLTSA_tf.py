@@ -2,7 +2,7 @@ import numpy as np
 from tqdm import tqdm
 import matplotlib.pyplot as plt
 
-def MLTSA(data, ans, model, mode):
+def MLTSA(data, ans, model, mode=""):
 
     if mode == "Normal":
         data = data[:, :-1, :]
@@ -20,7 +20,7 @@ def MLTSA(data, ans, model, mode):
         for n, mean in enumerate(gmeans):
             tmp_dat = np.copy(data)
             # print(tmp_dat.shape)
-            tmp_dat[n ,:] = mean
+            tmp_dat[n, :] = mean
             # print(tmp_dat.T.shape)
             yy = model.predict(tmp_dat.T)
             res = yy == ans[y]
