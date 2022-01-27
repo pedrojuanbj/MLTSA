@@ -12,10 +12,13 @@
 #
 import os
 import sys
-sys.path.insert(0, os.path.abspath('../../MLTSA_examples'))
-sys.path.insert(0, os.path.abspath('../../MLTSA_examples/OneD_pot'))
+sys.path.insert(0, os.path.abspath('../../MLTSA_datasets'))
+sys.path.insert(0, os.path.abspath('../../MLTSA_datasets/OneD_pot'))
 sys.path.insert(0, os.path.abspath('../../MLTSA_sklearn'))
 sys.path.insert(0, os.path.abspath('../../MLTSA_tensorflow'))
+sys.path.insert(0, os.path.abspath('../../MLTSA_datasets/MD_DATA'))
+sys.path.insert(0, os.path.abspath('../../MLTSA_datasets/MD_RUN'))
+sys.path.insert(0, os.path.abspath('../../notebooks'))
 
 
 # -- Project information -----------------------------------------------------
@@ -25,7 +28,7 @@ copyright = '2021, Pedro Buigues, Edina Rosta'
 author = 'Pedro Buigues, Edina Rosta'
 
 # The full version, including alpha/beta/rc tags
-release = '0.0.2'
+release = '0.0.4'
 
 
 # -- General configuration ---------------------------------------------------

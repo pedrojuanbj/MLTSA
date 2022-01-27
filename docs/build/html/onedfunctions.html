@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Analytical One-Dimensional model module &mdash; MLTSA 0.0.2 documentation</title><link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <title>Analytical One-Dimensional model module &mdash; MLTSA 0.0.4 documentation</title><link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
@@ -16,7 +16,7 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Scikit-Learn Integrated MLTSA module" href="sklearnfunctions.html" />
+    <link rel="next" title="Molecular Dynamics Analysis tool for MLTSA" href="trajanalysis.html" />
     <link rel="prev" title="Jupyter Notebook Examples" href="examples.html" /> 
 </head>
 
@@ -40,6 +40,7 @@
 <li class="toctree-l1"><a class="reference internal" href="summary.html">Summary of MLTSA’s Modules</a></li>
 <li class="toctree-l1"><a class="reference internal" href="examples.html">Jupyter Notebook Examples</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Analytical One-Dimensional model module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trajanalysis.html">Molecular Dynamics Analysis tool for MLTSA</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sklearnfunctions.html">Scikit-Learn Integrated MLTSA module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tffunctions.html">TensorFlow Integrated MLTSA module</a></li>
 </ul>
@@ -97,11 +98,11 @@
 <p>These are the functions that the analytical model provides</p>
 <span class="target" id="module-OneD_pot_data"></span><dl class="py class">
 <dt id="OneD_pot_data.dataset">
-<em class="property">class </em><code class="sig-prename descclassname">OneD_pot_data.</code><code class="sig-name descname">dataset</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">potentials</span></em>, <em class="sig-param"><span class="n">n_feats</span></em>, <em class="sig-param"><span class="n">degree_of_mixing</span></em><span class="sig-paren">)</span><a class="headerlink" href="#OneD_pot_data.dataset" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">OneD_pot_data.</span></code><code class="sig-name descname"><span class="pre">dataset</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">potentials</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_feats</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">degree_of_mixing</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#OneD_pot_data.dataset" title="Permalink to this definition">¶</a></dt>
 <dd><p>Class for the generation of datasets from a given set of potentials</p>
 <dl class="py method">
 <dt id="OneD_pot_data.dataset.PrepareData">
-<code class="sig-name descname">PrepareData</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em>, <em class="sig-param"><span class="n">ans</span></em>, <em class="sig-param"><span class="n">time_frame</span></em>, <em class="sig-param"><span class="n">mode</span><span class="o">=</span><span class="default_value">'Normal'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#OneD_pot_data.dataset.PrepareData" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">PrepareData</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ans</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_frame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Normal'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#OneD_pot_data.dataset.PrepareData" title="Permalink to this definition">¶</a></dt>
 <dd><p>Small wrapper that prepares the data inputted from the dataset object as the correct format to use on the ML
 approach.</p>
 <dl class="field-list simple">
@@ -124,7 +125,7 @@ Y as the labelled outcomes for each frame.</p>
 
 <dl class="py method">
 <dt id="OneD_pot_data.dataset.generate_linear">
-<code class="sig-name descname">generate_linear</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">n_samples</span></em>, <em class="sig-param"><span class="n">time</span></em>, <em class="sig-param"><span class="n">mode</span><span class="o">=</span><span class="default_value">'Normal'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#OneD_pot_data.dataset.generate_linear" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">generate_linear</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_samples</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Normal'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#OneD_pot_data.dataset.generate_linear" title="Permalink to this definition">¶</a></dt>
 <dd><p>Wrapper to generate data on demand, for the desired number of samples and time.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -144,11 +145,11 @@ Y as the labelled outcomes for each frame.</p>
 
 <dl class="py class">
 <dt id="OneD_pot_data.potentials">
-<em class="property">class </em><code class="sig-prename descclassname">OneD_pot_data.</code><code class="sig-name descname">potentials</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">n_pots</span></em>, <em class="sig-param"><span class="n">n_dw</span></em>, <em class="sig-param"><span class="n">relevant_feat</span></em><span class="sig-paren">)</span><a class="headerlink" href="#OneD_pot_data.potentials" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">OneD_pot_data.</span></code><code class="sig-name descname"><span class="pre">potentials</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_pots</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_dw</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">relevant_feat</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#OneD_pot_data.potentials" title="Permalink to this definition">¶</a></dt>
 <dd><p>Class for potentials generation</p>
 <dl class="py method">
 <dt id="OneD_pot_data.potentials.DataGeneration">
-<code class="sig-name descname">DataGeneration</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">n_samples</span></em>, <em class="sig-param"><span class="n">potentials</span></em>, <em class="sig-param"><span class="n">sim_time</span></em><span class="sig-paren">)</span><a class="headerlink" href="#OneD_pot_data.potentials.DataGeneration" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">DataGeneration</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_samples</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">potentials</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sim_time</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#OneD_pot_data.potentials.DataGeneration" title="Permalink to this definition">¶</a></dt>
 <dd><p>Function to generate trajectories on the given potentials for the number of samples/simulations and time/steps
 requested.</p>
 <dl class="field-list simple">
@@ -168,7 +169,7 @@ of (n_simulations/n_samples, n_frames/sim_time, n_potentials).</p>
 
 <dl class="py method">
 <dt id="OneD_pot_data.potentials.DefinePotentials">
-<code class="sig-name descname">DefinePotentials</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">n_features</span></em>, <em class="sig-param"><span class="n">double_well_potentials</span></em>, <em class="sig-param"><span class="n">plot</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#OneD_pot_data.potentials.DefinePotentials" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">DefinePotentials</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_features</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">double_well_potentials</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#OneD_pot_data.potentials.DefinePotentials" title="Permalink to this definition">¶</a></dt>
 <dd><p>This function generates all X and Y values for the number of potentials requested</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -187,7 +188,7 @@ and Shape is the X/Y shape of the potentials.</p>
 
 <dl class="py method">
 <dt id="OneD_pot_data.potentials.GetAnswers">
-<code class="sig-name descname">GetAnswers</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em>, <em class="sig-param"><span class="n">relevant_feat</span></em><span class="sig-paren">)</span><a class="headerlink" href="#OneD_pot_data.potentials.GetAnswers" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">GetAnswers</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">relevant_feat</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#OneD_pot_data.potentials.GetAnswers" title="Permalink to this definition">¶</a></dt>
 <dd><p>Small function made to label the outcome of the given simulations from a list containing them. Note that the
 values for classifying are defaulted to above or below 0.5. Change them manually if needed.</p>
 <dl class="field-list simple">
@@ -205,7 +206,7 @@ values for classifying are defaulted to above or below 0.5. Change them manually
 
 <dl class="py method">
 <dt id="OneD_pot_data.potentials.gen_potential">
-<code class="sig-name descname">gen_potential</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span><span class="o">=</span><span class="default_value">'double_well'</span></em>, <em class="sig-param"><span class="n">n_bins</span><span class="o">=</span><span class="default_value">100</span></em>, <em class="sig-param"><span class="n">RC_range</span><span class="o">=</span><span class="default_value">[0, 1]</span></em><span class="sig-paren">)</span><a class="headerlink" href="#OneD_pot_data.potentials.gen_potential" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">gen_potential</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'double_well'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_bins</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">RC_range</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[0,</span> <span class="pre">1]</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#OneD_pot_data.potentials.gen_potential" title="Permalink to this definition">¶</a></dt>
 <dd><p>This function generates the potential requested. Depending on the type and the number of bins as well as the
 range of values that can be used.</p>
 <dl class="field-list simple">
@@ -225,7 +226,7 @@ the values over Y of the potentials.</p>
 
 <dl class="py method">
 <dt id="OneD_pot_data.potentials.gen_traj_langevin">
-<code class="sig-name descname">gen_traj_langevin</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">coeffs_derivative</span></em>, <em class="sig-param"><span class="n">start_pos</span><span class="o">=</span><span class="default_value">0.5</span></em>, <em class="sig-param"><span class="n">n_steps</span><span class="o">=</span><span class="default_value">1000</span></em>, <em class="sig-param"><span class="n">diffusion</span><span class="o">=</span><span class="default_value">0.01</span></em>, <em class="sig-param"><span class="n">simul_lagtime</span><span class="o">=</span><span class="default_value">0.0001</span></em><span class="sig-paren">)</span><a class="headerlink" href="#OneD_pot_data.potentials.gen_traj_langevin" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">gen_traj_langevin</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">coeffs_derivative</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_pos</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_steps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">diffusion</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.01</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">simul_lagtime</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0001</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#OneD_pot_data.potentials.gen_traj_langevin" title="Permalink to this definition">¶</a></dt>
 <dd><p>Function that generates trajectories on a given set of derivative coefficients with different parameters to 
 control the behaviour of the simulation. Crucial to generate data on the 1D potential.</p>
 <dl class="field-list simple">
@@ -250,7 +251,7 @@ coordinates will have.</p></li>
 
 <dl class="py method">
 <dt id="OneD_pot_data.potentials.generate_data">
-<code class="sig-name descname">generate_data</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">n_samples</span></em>, <em class="sig-param"><span class="n">time</span></em><span class="sig-paren">)</span><a class="headerlink" href="#OneD_pot_data.potentials.generate_data" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">generate_data</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_samples</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#OneD_pot_data.potentials.generate_data" title="Permalink to this definition">¶</a></dt>
 <dd><p>Function to wrap generating data and labelling it.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -275,7 +276,7 @@ and the second one the corresponding labels for the isimulations.</p>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="examples.html" class="btn btn-neutral float-left" title="Jupyter Notebook Examples" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="sklearnfunctions.html" class="btn btn-neutral float-right" title="Scikit-Learn Integrated MLTSA module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="trajanalysis.html" class="btn btn-neutral float-right" title="Molecular Dynamics Analysis tool for MLTSA" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

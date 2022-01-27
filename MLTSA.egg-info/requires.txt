@@ -1,0 +1,6 @@
+numpy
+scipy
+matplotlib
+tqdm
+scikit-learn
+tensorflow

@@ -21,6 +21,8 @@ analytical model on demand for detecting relevant features in a dataset.
 
    onedfunctions.rst
 
+   trajanalysis.rst
+
    sklearnfunctions.rst
 
    tffunctions.rst

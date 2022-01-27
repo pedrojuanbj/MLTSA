@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TensorFlow Integrated MLTSA module &mdash; MLTSA 0.0.2 documentation</title><link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <title>TensorFlow Integrated MLTSA module &mdash; MLTSA 0.0.4 documentation</title><link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
@@ -39,6 +39,7 @@
 <li class="toctree-l1"><a class="reference internal" href="summary.html">Summary of MLTSA’s Modules</a></li>
 <li class="toctree-l1"><a class="reference internal" href="examples.html">Jupyter Notebook Examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="onedfunctions.html">Analytical One-Dimensional model module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trajanalysis.html">Molecular Dynamics Analysis tool for MLTSA</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sklearnfunctions.html">Scikit-Learn Integrated MLTSA module</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">TensorFlow Integrated MLTSA module</a></li>
 </ul>
@@ -95,7 +96,47 @@
 <h1>TensorFlow Integrated MLTSA module<a class="headerlink" href="#tensorflow-integrated-mltsa-module" title="Permalink to this headline">¶</a></h1>
 <p>These are the functions that are integrated with tensorflow for MLTSA and training of ML models and the models creation
 and integration onto the code.</p>
-<span class="target" id="module-MLTSA_tf"></span><span class="target" id="module-TF_2_MLP"></span><p>This snippet of code is for the set of functions we will use for the basic Multi-Layer Perceptron architecture to try
+<span class="target" id="module-MLTSA_tf"></span><dl class="py function">
+<dt id="MLTSA_tf.MLTSA">
+<code class="sig-prename descclassname"><span class="pre">MLTSA_tf.</span></code><code class="sig-name descname"><span class="pre">MLTSA</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ans</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoder</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">drop_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Average'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Normal'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#MLTSA_tf.MLTSA" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function to apply the Machine Learning Transition State Analysis to a given training dataset/answers and trained
+model. It calculates the Gloabl Means and re-calculates accuracy for predicting each outcome.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<em>list</em>) – Training data used for training the ML model. Must have shape (samples, features)</p></li>
+<li><p><strong>ans</strong> (<em>list</em>) – Outcomes for each sample on “data”. Shape must be (samples)</p></li>
+<li><p><strong>model</strong> – </p></li>
+<li><p><strong>drop_mode</strong> – </p></li>
+<li><p><strong>data_mode</strong> – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="MLTSA_tf.MLTSA_Plot">
+<code class="sig-prename descclassname"><span class="pre">MLTSA_tf.</span></code><code class="sig-name descname"><span class="pre">MLTSA_Plot</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">FR</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dataset_og</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pots</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">errorbar</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#MLTSA_tf.MLTSA_Plot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Wrapper for plotting the results from the Accuracy Drop procedure</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>FR</strong> – Values from the feature reduction</p></li>
+<li><p><strong>dataset_og</strong> – Original dataset object class used for generating the data</p></li>
+<li><p><strong>pots</strong> – Original potentials object class used for generating the data</p></li>
+<li><p><strong>errorbar</strong> – Flag for including or not including the errobars in case of using replicas.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+<span class="target" id="module-TF_2_MLP"></span><p>This snippet of code is for the set of functions we will use for the basic Multi-Layer Perceptron architecture to try
 on the different data.</p>
 <p>Note this is built on TensorFlow 2 code and may not work on earlier versions.</p>
 <p>In this snippet the architecture is built on the sequential “build” of TF.</p>

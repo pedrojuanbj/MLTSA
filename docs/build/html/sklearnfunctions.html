@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Scikit-Learn Integrated MLTSA module &mdash; MLTSA 0.0.2 documentation</title><link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <title>Scikit-Learn Integrated MLTSA module &mdash; MLTSA 0.0.4 documentation</title><link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
@@ -17,7 +17,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="TensorFlow Integrated MLTSA module" href="tffunctions.html" />
-    <link rel="prev" title="Analytical One-Dimensional model module" href="onedfunctions.html" /> 
+    <link rel="prev" title="Molecular Dynamics Analysis tool for MLTSA" href="trajanalysis.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -40,6 +40,7 @@
 <li class="toctree-l1"><a class="reference internal" href="summary.html">Summary of MLTSA’s Modules</a></li>
 <li class="toctree-l1"><a class="reference internal" href="examples.html">Jupyter Notebook Examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="onedfunctions.html">Analytical One-Dimensional model module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trajanalysis.html">Molecular Dynamics Analysis tool for MLTSA</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Scikit-Learn Integrated MLTSA module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tffunctions.html">TensorFlow Integrated MLTSA module</a></li>
 </ul>
@@ -97,7 +98,7 @@
 <p>These are the functions that are integrated with sklearn for MLTSA and training of ML models.</p>
 <span class="target" id="module-models"></span><dl class="py function">
 <dt id="models.SKL_Train">
-<code class="sig-prename descclassname">models.</code><code class="sig-name descname">SKL_Train</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">clf</span></em>, <em class="sig-param"><span class="n">X</span></em>, <em class="sig-param"><span class="n">Y</span></em><span class="sig-paren">)</span><a class="headerlink" href="#models.SKL_Train" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">models.</span></code><code class="sig-name descname"><span class="pre">SKL_Train</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">clf</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Y</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#models.SKL_Train" title="Permalink to this definition">¶</a></dt>
 <dd><p>Wrapper to train any machine learning model/classifier from the Scikit-Learn suite which uses fit() to train and
 predict() to predict the outcome values.</p>
 <dl class="field-list simple">
@@ -116,7 +117,7 @@ predict() to predict the outcome values.</p>
 
 <span class="target" id="module-MLTSA_sk"></span><dl class="py function">
 <dt id="MLTSA_sk.MLTSA">
-<code class="sig-prename descclassname">MLTSA_sk.</code><code class="sig-name descname">MLTSA</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em>, <em class="sig-param"><span class="n">ans</span></em>, <em class="sig-param"><span class="n">model</span></em>, <em class="sig-param"><span class="n">drop_mode</span><span class="o">=</span><span class="default_value">'Median'</span></em>, <em class="sig-param"><span class="n">data_mode</span><span class="o">=</span><span class="default_value">'Normal'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#MLTSA_sk.MLTSA" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">MLTSA_sk.</span></code><code class="sig-name descname"><span class="pre">MLTSA</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ans</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">drop_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Average'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Normal'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#MLTSA_sk.MLTSA" title="Permalink to this definition">¶</a></dt>
 <dd><p>Function to apply the Machine Learning Transition State Analysis to a given training dataset/answers and trained
 model. It calculates the Gloabl Means and re-calculates accuracy for predicting each outcome.</p>
 <dl class="field-list simple">
@@ -137,14 +138,15 @@ model. It calculates the Gloabl Means and re-calculates accuracy for predicting 
 
 <dl class="py function">
 <dt id="MLTSA_sk.MLTSA_Plot">
-<code class="sig-prename descclassname">MLTSA_sk.</code><code class="sig-name descname">MLTSA_Plot</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">FR</span></em>, <em class="sig-param"><span class="n">dataset_og</span></em>, <em class="sig-param"><span class="n">pots</span></em>, <em class="sig-param"><span class="n">errorbar</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="headerlink" href="#MLTSA_sk.MLTSA_Plot" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
+<code class="sig-prename descclassname"><span class="pre">MLTSA_sk.</span></code><code class="sig-name descname"><span class="pre">MLTSA_Plot</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">FR</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dataset_og</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pots</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">errorbar</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#MLTSA_sk.MLTSA_Plot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Wrapper for plotting the results from the Accuracy Drop procedure</p>
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>FR</strong> – </p></li>
-<li><p><strong>dataset_og</strong> – </p></li>
-<li><p><strong>pots</strong> – </p></li>
-<li><p><strong>errorbar</strong> – </p></li>
+<li><p><strong>FR</strong> – Values from the feature reduction</p></li>
+<li><p><strong>dataset_og</strong> – Original dataset object class used for generating the data</p></li>
+<li><p><strong>pots</strong> – Original potentials object class used for generating the data</p></li>
+<li><p><strong>errorbar</strong> – Flag for including or not including the errobars in case of using replicas.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -159,7 +161,7 @@ model. It calculates the Gloabl Means and re-calculates accuracy for predicting 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="onedfunctions.html" class="btn btn-neutral float-left" title="Analytical One-Dimensional model module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="trajanalysis.html" class="btn btn-neutral float-left" title="Molecular Dynamics Analysis tool for MLTSA" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="tffunctions.html" class="btn btn-neutral float-right" title="TensorFlow Integrated MLTSA module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
