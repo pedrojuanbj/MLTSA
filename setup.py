@@ -10,7 +10,7 @@ classifiers = [
 
 setup(
     name='MLTSA',
-    version='0.0.5',
+    version='0.0.7',
     description='Machine Learning Transition State Analysis',
     long_description='',
     url='',

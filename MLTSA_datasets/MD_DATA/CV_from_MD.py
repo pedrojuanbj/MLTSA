@@ -31,6 +31,8 @@ class CVs(object):
 
         """
 
+        #TODO Implement a way to use multiple topologies, for now only way to make it work is call the CV each time.
+
         self.topology_file = md.load(top)
         self.topology_path = top
         self.top = self.topology_file.top
@@ -122,11 +124,27 @@ class CVs(object):
 
         elif self.CV_type == "custom_selection":
             # TODO Label yet to test if it works, please do consider double cheking that it works before using
-            relevant_atoms = list(self.top.select(custom_selection_string))
-            CV_indices = []
-            for a,b in combinations(relevant_atoms, 2):
-                CV_indices.append([a, b])
-            self.CV_indices = CV_indices
+
+
+            """" For now if you wish to find all interatomic between multiple selections, then put all selections under 
+            one string using 'or' to keep adding selections, otherwise if you want to define pairs manually give them as 
+            lists of [[atom1,atom2], [atom3.atom4]] """
+
+            if isinstance(custom_selection_string, list):
+                CV_indices = []
+                for pair in custom_selection_string:
+                    idx1 = self.top.select(pair[0])[0]
+                    idx2 = self.top.select(pair[1])[0]
+                    CV_indices.append([idx1, idx2])
+
+                self.CV_indices = CV_indices
+
+            else:
+                relevant_atoms = list(self.top.select(custom_selection_string))
+                CV_indices = []
+                for a, b in combinations(relevant_atoms, 2):
+                    CV_indices.append([a, b])
+                self.CV_indices = CV_indices
 
         elif self.CV_type == "bubble_ligand":
             # Checked label, works fine
@@ -201,7 +219,8 @@ class MDs(object):
 
 
     def label_simulations(self, top, dcd_paths, selection_strings_to_label, upper_lim, lower_lim,
-                          loading="normal", plotting=False, show_plots=False, save_labels=False, save_plots=False, save_path=""):
+                          loading="normal", end_perc=0.25, get_sum=True, plotting_sum=False,
+                          plotting_all=False, show_plots=False, save_labels=False, save_plots=False, save_path=""):
         """
 
         Method for the labeling of a given set of trajectory files on the desired string selections to check and the
@@ -233,36 +252,52 @@ class MDs(object):
             dcd_paths list.
         """
         #Prepare everything to calculate the data needed.
-        topo = md.load(top)
-        pairs = []
-        for sel1, sel2 in selection_strings_to_label:
-            idx1 = topo.topology.select(sel1)
-            idx2 = topo.topology.select(sel2)
-            pairs.append([idx1[0], idx2[0]])
 
-        vars = CVs(top)
-        CV_indices = np.array(pairs)
-        print(CV_indices)
-        vars.define_variables(CV_type="custom_CVs", CV_indices=CV_indices)
+        if isinstance(top, list):
+            clf_distances = []
+            for t, dcd in zip(top, dcd_paths):
+                topo = md.load_pdb(str(t))
+                pairs = []
+                for sel1, sel2 in selection_strings_to_label:
+                    idx1 = topo.topology.select(sel1)
+                    idx2 = topo.topology.select(sel2)
+                    pairs.append([idx1[0], idx2[0]])
+                vars = CVs(t)
+                CV_indices = np.array(pairs)
+                vars.define_variables(CV_type="custom_CVs", CV_indices=CV_indices)
+                dists = self.calculate_CVs(vars, [dcd])
+                clf_distances.append(dists[0])
+        else:
+            topo = md.load(top)
+            pairs = []
+            for sel1, sel2 in selection_strings_to_label:
+                idx1 = topo.topology.select(sel1)
+                idx2 = topo.topology.select(sel2)
+                pairs.append([idx1[0], idx2[0]])
+            vars = CVs(top)
+            CV_indices = np.array(pairs)
+            vars.define_variables(CV_type="custom_CVs", CV_indices=CV_indices)
+            clf_distances = self.calculate_CVs(vars, dcd_paths)
 
-        clf_distances = self.calculate_CVs(vars, dcd_paths)
 
-        if plotting == True:
+        if plotting_all == True or plotting_sum == True:
             print("Plotting values, make sure you want to do this to either show them or save them somewhere.")
             import matplotlib.pyplot as plt
 
 
         md_labels = []
+        sums_traj = []
         for n, traj in enumerate(clf_distances):
             sums = []
-            if plotting == True:
+            sum_plot = []
+            if plotting_all == True:
                 plt.figure()
             for d in range(len(selection_strings_to_label)):
                 values = np.array(traj).T[d]
-                if plotting == True:
+                if plotting_all == True:
                     filename = re.split('/', dcd_paths[n])[-1]
                     plt.title("Sim: "+filename)
-                    plt.plot(values*10,
+                    plt.plot(values,
                              label="CV {}: {} - {}".format(d, selection_strings_to_label[d][0],
                                 selection_strings_to_label[d][1] ))
                     plt.xlabel("Frame")
@@ -271,10 +306,34 @@ class MDs(object):
                     if show_plots == True:
                         plt.show()
                     if save_plots == True:
-                        plt.savefig(str(save_path)+filename+"_label.svg")
+                        plt.savefig(str(save_path)+filename+"CV"+str(d)+"_label.svg")
                     plt.close()
-                sums.append(np.mean(values[:int(len(values)*0.25)]))
+                sum_plot.append(values)
+
+                #This fetches the mean value found on the "end_perc" of the trajectory
+                sums.append(np.mean(values[int(len(values)*(1-end_perc)):]))
+
+            if plotting_sum == True:
+                filename = re.split('/', dcd_paths[n])[-1]
+                plt.figure()
+                plt.title("Sum of Distances Trajectory "+filename)
+                plt.plot(np.sum(sum_plot, axis=0), label="Sum of distances")
+                label_data = np.sum(sum_plot, axis=0)
+                label_data[0:int(len(label_data)*(1-end_perc))] = np.NaN
+                plt.plot(label_data, label="Range used for labelling", linewidth=2)
+                plt.xlabel("Frame")
+                plt.ylabel("Distance(A)")
+                plt.legend()
+                if show_plots == True:
+                    plt.show()
+                if save_plots == True:
+                    plt.savefig(str(save_path) + filename + "_sum_label.svg")
+                plt.close()
+
+
+            #This evaluates the sum of the means of each value to classify
             sums = np.sum(sums)
+            sums_traj.append(sums)
             if sums < lower_lim:
                 md_labels.append("IN")
             elif sums > upper_lim:
@@ -289,7 +348,11 @@ class MDs(object):
                     f.write(str(d)+"\t"+str(label)+"\n")
             f.close()
 
-        return md_labels
+        if get_sum == True:
+            print("Returning labels and the sum of values for each trajectory")
+            return md_labels, sums_traj
+        else:
+            return md_labels
 
 
 if __name__ == '__main__':
