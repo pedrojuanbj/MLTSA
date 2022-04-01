@@ -183,7 +183,7 @@ class MDs(object):
         print("Setting up MD analyzer")
 
 
-    def calculate_CVs(self, CVs, dcd_paths, loading="normal"):
+    def calculate_CVs(self, CVs, dcd_paths, loading="normal", iter_chunk=None):
         """
 
         Method for calculating the Collective Variables previously defined by passing on a CVs object along the
@@ -215,7 +215,13 @@ class MDs(object):
 
 
         if loading == "iterload":
-            print()
+            distances = []
+            for dcd in dcd_paths:
+                gen = md.iterload(dcd, top=self.topology, chunk=int(iter_chunk))
+                dists = md.compute_distances(next(gen), CVs.CV_indices)
+                distances.append(dists)
+
+            return distances
 
 
     def label_simulations(self, top, dcd_paths, selection_strings_to_label, upper_lim, lower_lim,
