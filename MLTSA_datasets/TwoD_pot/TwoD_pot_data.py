@@ -1,5 +1,6 @@
 import src
-
+from src.generateTraj import generateTraj
+from src.utils import *
 #-- Code for potential generation --#
 def pot_generator(name):
     """pot_generator A getter function to get the object from potential generation class
