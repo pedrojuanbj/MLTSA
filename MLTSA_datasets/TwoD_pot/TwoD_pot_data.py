@@ -65,3 +65,36 @@ functions: \n\nfrom numpy import exp, sin, cos\nfrom numpy import arctan2 as ata
         print(DX + "\n\n")
         print(DY + "\n\n")
 #-- End of Code for potential generation --#
+
+#-- Code for Traj generation --#
+def generate_traj(type, number=100, visual=False, help=False):
+    """generate_traj A meta function that use for generating traj data, simply wrapped I/O of gemerateTraj class
+
+    :param type: pattern code of potential, indicating type of potential to generate traj on, including s2, s3 and z
+    :type type: str
+    :param number: number of trajs to be generated at once, defaults to 100
+    :type number: int, optional
+    :param visual: boolean value indicating plot the result of generated trajs or not, defaults to False
+    :type visual: bool, optional
+    :param help: boolean value indicating show the help information from generateTraj calss or not, defaults to False
+    :type help: bool, optional
+    :raises ValueError: indicating the user input not match pre-set potential parrtern code, should be z, s2 or s3
+
+    :return: An array containing all the traj data in shape of (traj_index, dim_index(x or y), step_index)
+    :rtype: numpy.array
+    """    
+    # Recognize pattern code, including spiral2(s2), spiral3(s3), zshape(z)
+    if type == 's2':
+        gen = generateTraj(dx_s2, dy_s2, 'spiral', help=help)
+    elif type == 's3':
+        gen = generateTraj(dx_s3, dy_s3, 'spiral', help=help)
+    elif type == 'z':
+        gen = generateTraj(dx_z, dy_z, 'zshape', help=help)
+    else:
+        raise ValueError('Pattern code not recognized, please choose from z, s2, s3 or\
+modify the detailed trajectory generator by calling generateTraj class.')
+    # Generate traj as required
+    raw_trajs = gen.batch_generator(batch_size = number, visual=visual)
+    return raw_trajs
+#-- End of Code for traj generation --#
+
