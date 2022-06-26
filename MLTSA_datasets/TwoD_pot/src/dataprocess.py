@@ -105,7 +105,7 @@ class DataProcess:
         self.tail = 10000
         self.eps = 0.5
         # Clean params
-        self.cnum = 0 # Modified at class function
+        self.cnum = 2 # Modified at class function
         # Filter params
         self.fsize = 0 # Modified at class function
 
@@ -113,9 +113,12 @@ class DataProcess:
         return classifier(data, head_size=self.head, tail_size=self.tail,\
                           eps=self.eps, visual_flag=visual, debug = self.debug)
 
-    def clean(self, data, labels, cnum=2, visual=False):
+    def clean(self, data, labels, cnum=0, visual=False):
         # Record the class number input
-        self.cnum=cnum
+        if cnum > 0: # indicating the user has changed the cnum themselves
+            self.cnum=cnum
+        else:
+            pass # if the cnum keep 0 then use the modified cnum, default as 2
         clean_data, clean_labels = pickOut(data, labels, cnum=self.cnum, debug=self.debug)
         if visual:
             for traj, label in zip(clean_data, clean_labels):
