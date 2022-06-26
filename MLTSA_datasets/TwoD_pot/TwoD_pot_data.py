@@ -115,6 +115,7 @@ def data_processor(type):
     if type == 's2':
         dp.eps = 2
     elif type == 's3':
+        dp.eps = 1.5 # Based on test
         dp.cnum = 3
     elif type == 'z':
         pass # The defalut settings is perfect for zshape potential processing
