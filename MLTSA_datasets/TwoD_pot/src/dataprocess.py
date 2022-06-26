@@ -97,30 +97,32 @@ defaults to 2
 class DataProcess:
     """ The data process class
     """    
-    def __init__(self, visual=False, debug=False):
+    def __init__(self, debug=False):
         # Global flag params
-        self.vis = visual
         self.debug = debug
         # Label params
         self.head = 9900
         self.tail = 10000
         self.eps = 0.5
-        self.vis = visual
         # Clean params
         self.cnum = 0 # Modified at class function
         # Filter params
         self.fsize = 0 # Modified at class function
 
-    def label(self, data):
+    def label(self, data, visual=False):
         return classifier(data, head_size=self.head, tail_size=self.tail,\
-                          eps=self.eps, visual_flag=self.vis, debug = self.debug)
+                          eps=self.eps, visual_flag=visual, debug = self.debug)
 
-    def clean(self, data, labels, cnum=2):
+    def clean(self, data, labels, cnum=2, visual=False):
         # Record the class number input
         self.cnum=cnum
-        return pickOut(data, labels, cnum=self.cnum, debug=self.debug) # in Data, labels order
+        clean_data, clean_labels = pickOut(data, labels, cnum=self.cnum, debug=self.debug)
+        if visual:
+            for traj, label in zip(clean_data, clean_labels):
+                plt.plot(traj[0], traj[1], c= "C{}".format(label), alpha=0.5, marker='o', markersize=1, ls='')
+        return  clean_data, clean_labels# in Data, labels order
 
-    def filter(self, data, labels, fsize=10):
+    def filter(self, data, labels, fsize=10, visual=False):
         """filter A function to provide balanced data with each class in fsize number
 
         :param data: the trajectory data
@@ -155,4 +157,9 @@ class DataProcess:
             balanced_labels.extend(Slabel[head:head+self.fsize])
             balanced_data.extend(Sdata[head:head+self.fsize])
             head += c
+        if visual:
+            for traj, label in zip(balanced_data, balanced_labels):
+                plt.plot(traj[0], traj[1], c= "C{}".format(label), alpha=0.5, marker='o', markersize=1, ls='')
         return np.array(balanced_data), np.array(balanced_labels) # in Data, labels order
+
+
