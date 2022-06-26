@@ -1,6 +1,7 @@
 import src
 from src.generateTraj import generateTraj
 from src.dataprocess import DataProcess
+from src.projection import Projector
 from src.utils import *
 #-- Code for potential generation --#
 def pot_generator(name):
