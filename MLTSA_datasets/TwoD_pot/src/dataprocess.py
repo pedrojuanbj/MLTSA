@@ -97,7 +97,10 @@ defaults to 2
 class DataProcess:
     """ The data process class
     """    
-    def __init__(self, visual=False):
+    def __init__(self, visual=False, debug=False):
+        # Global flag params
+        self.vis = visual
+        self.debug = debug
         # Label params
         self.head = 9900
         self.tail = 10000
@@ -110,12 +113,12 @@ class DataProcess:
 
     def label(self, data):
         return classifier(data, head_size=self.head, tail_size=self.tail,\
-                          eps=self.eps, visual_flag=self.vis)
+                          eps=self.eps, visual_flag=self.vis, debug = self.debug)
 
     def clean(self, data, labels, cnum=2):
         # Record the class number input
         self.cnum=cnum
-        return pickOut(data, labels, cnum=self.cnum) # in Data, labels order
+        return pickOut(data, labels, cnum=self.cnum, debug=self.debug) # in Data, labels order
 
     def filter(self, data, labels, fsize=10):
         """filter A function to provide balanced data with each class in fsize number
@@ -146,7 +149,8 @@ class DataProcess:
         head = 0
         for i , c in zip(labelSet, labelCount):
             #DEBUG
-            #print("processing label " + str(i))
+            if self.debug:
+                print("processing label " + str(i))
             assert(list(set(Slabel[head:head+self.fsize]))) == [i], "Index not match, please review the labels"
             balanced_labels.extend(Slabel[head:head+self.fsize])
             balanced_data.extend(Sdata[head:head+self.fsize])
