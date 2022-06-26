@@ -16,7 +16,7 @@ def concatenate(data):
         cdata = np.concatenate((cdata, data[i]), axis=1)
     return cdata
 
-def classifier(data, head_size=0, tail_size=10000, eps=0.5, visual_flag=False):
+def classifier(data, head_size=0, tail_size=10000, eps=0.5, visual_flag=False, debug = False):
     """classifier A classifier depend on DBSCAN to label different traj with labels wrt their position
 
     :param data: traj data to be labelled, shape as (n_traj, n_dim, n_step)
@@ -45,21 +45,23 @@ def classifier(data, head_size=0, tail_size=10000, eps=0.5, visual_flag=False):
     for i in range(1,len(X.T),data_len): # This should be modified wrt length of lables and length of assigned dataset in DBSCAN
         label.append(clustering.labels_[i])
     counts = [label.count(i) for i in set(label)]
-    print(set(label))
-    print(counts)
+    #DEBUG
+    if debug:
+        print(set(label))
+        print(counts)
     lgd_idx = [label.index(i) for i in set(label)]
     # Optional: Plot of the result
     if visual_flag:
         for i in lgd_idx:
             plt.plot(data[i][0],data[i][1], color="C{}".format(label[i]), label=str(label[i]))
-            plt.legend()
+            plt.legend(loc='right')
         for i in range(len(data)):
             plt.plot(data[i][0], data[i][1], color="C{}".format(label[i]), alpha=0.2)
     # Output
     return label
 
 
-def pickOut(data, labels, cnum=2):
+def pickOut(data, labels, cnum=2, debug=False):
     """pickOut A atomic function for cleaning the data, picking out the outliner trajs that labelled as minority
 
     :param data: input raw data of trajs, not cleaned, shape as (n_traj, n_dim, n_step)
@@ -85,8 +87,9 @@ defaults to 2
                 pLabels.append(labels[idx])
             else:
                 continue
-    #Debug
-    print(len(pData), len(pLabels))
+    #DEBUG
+    if debug:
+        print(len(pData), len(pLabels))
     return np.array(pData), np.array(pLabels)
 #-- End of Utils --#
 
