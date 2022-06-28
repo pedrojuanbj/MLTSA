@@ -63,7 +63,7 @@ class Projector:
         #ARROW
         ### axes = axis
         plt.arrow(0, 0, temp[0], temp[1], width=0.618,color='black', alpha=0.5)
-    def show_rotation(self, data, labels, j):
+    def show_rotation(self, data, labels, feature_id):
         projs_X = []
         projs_Y = []
         for i in range(len(data)):
@@ -71,18 +71,18 @@ class Projector:
             projs_Y.append(np.array(self.rotation(data[i], 'Y')))
         newX = np.array(projs_X)
         newY = np.array(projs_Y)
-        f0X = newX[:,j,:]
-        f0Y = newY[:,j,:]
+        f0X = newX[:,feature_id,:]
+        f0Y = newY[:,feature_id,:]
         for i in range(len(data)):
             plt.scatter(f0X[i], f0Y[i], c="C{}".format(labels[i]),s=1)
-    def show_transform(self, data, labels, j):
+    def show_transform(self, data, labels, feature_id):
         plt.figure(figsize=(8,4))
         ax1 = plt.subplot(121)
         ###
         for i in range(len(data)):
             ax1.scatter(data[i][0], data[i][1], c="C{}".format(labels[i]),s=1)
 
-        theta = self.coeff[j]
+        theta = self.coeff[feature_id]
         temp = [np.cos(theta) * 13, np.sin(theta) * 13]
         #ax1.plot([0,temp[0]],[0,temp[1]], "--",  linewidth=3, color='black') 
         ax1.arrow(0, 0, temp[0], temp[1], width=0.001, head_width=1, alpha=0.5, color='black')
@@ -99,8 +99,8 @@ class Projector:
             projs_Y.append(np.array(self.rotation(data[i], 'Y')))
         newX = np.array(projs_X)
         newY = np.array(projs_Y)
-        f0X = newX[:,j,:]
-        f0Y = newY[:,j,:]
+        f0X = newX[:,feature_id,:]
+        f0Y = newY[:,feature_id,:]
         for i in range(len(data)):
             ax2.scatter(f0X[i], f0Y[i], c="C{}".format(labels[i]),s=1)
         ax2.set_xlim(-20,20)
@@ -108,9 +108,7 @@ class Projector:
         ax2.set_title("Transformed Data")
         ###
         plt.axis("equal")
-    def show_feature(self, data, j, sel='X'):
+    def show_feature(self, data, labels, feature_id, sel='X'):
         projs = self.batch_rotation(data, sel=sel)
-        for i in range(len(projs)//2):
-            plt.plot(projs[i][j], color="C0")
-        for i in range(len(projs)//2, len(projs)):
-            plt.plot(projs[i][j], color="C1")
+        for proj, label in zip(projs[:,feature_id], labels):
+                plt.plot(proj, color="C{}".format(label))
