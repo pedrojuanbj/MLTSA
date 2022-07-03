@@ -20,7 +20,8 @@ setup(
     classifiers=classifiers,
     keywords="MLTSA",
     packages=find_packages(),
-    install_requires=["numpy", "scipy", "matplotlib", "tqdm", "scikit-learn"]
+    install_requires=["numpy", "scipy", "matplotlib", "tqdm",
+                      "scikit-learn", "mdtraj", "tensorflow", "numba", "sympy",]
 )
 
 #"numpy", "scipy", "matplotlib", "tqdm", "scikit-learn"
