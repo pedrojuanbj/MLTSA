@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TensorFlow Integrated MLTSA module &mdash; MLTSA 0.0.4 documentation</title><link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <title>TensorFlow Integrated MLTSA module &mdash; MLTSA 0.0.7 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
-  <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
@@ -16,6 +19,7 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="TwoD: application programming interface (API)" href="twodpots.html" />
     <link rel="prev" title="Scikit-Learn Integrated MLTSA module" href="sklearnfunctions.html" /> 
 </head>
 
@@ -34,7 +38,7 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption"><span class="caption-text">Contents:</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="summary.html">Summary of MLTSA’s Modules</a></li>
 <li class="toctree-l1"><a class="reference internal" href="examples.html">Jupyter Notebook Examples</a></li>
@@ -42,6 +46,8 @@
 <li class="toctree-l1"><a class="reference internal" href="trajanalysis.html">Molecular Dynamics Analysis tool for MLTSA</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sklearnfunctions.html">Scikit-Learn Integrated MLTSA module</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">TensorFlow Integrated MLTSA module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="twodpots.html">TwoD: application programming interface (API)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="twodpots_source.html">Source code functions for the TwoD generation</a></li>
 </ul>
 
         </div>
@@ -92,13 +98,13 @@
     text-align: unset;
 }
 </style>
-<div class="section" id="tensorflow-integrated-mltsa-module">
-<h1>TensorFlow Integrated MLTSA module<a class="headerlink" href="#tensorflow-integrated-mltsa-module" title="Permalink to this headline">¶</a></h1>
+<section id="tensorflow-integrated-mltsa-module">
+<h1>TensorFlow Integrated MLTSA module<a class="headerlink" href="#tensorflow-integrated-mltsa-module" title="Permalink to this headline"></a></h1>
 <p>These are the functions that are integrated with tensorflow for MLTSA and training of ML models and the models creation
 and integration onto the code.</p>
 <span class="target" id="module-MLTSA_tf"></span><dl class="py function">
-<dt id="MLTSA_tf.MLTSA">
-<code class="sig-prename descclassname"><span class="pre">MLTSA_tf.</span></code><code class="sig-name descname"><span class="pre">MLTSA</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ans</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoder</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">drop_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Average'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Normal'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#MLTSA_tf.MLTSA" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="MLTSA_tf.MLTSA">
+<span class="sig-prename descclassname"><span class="pre">MLTSA_tf.</span></span><span class="sig-name descname"><span class="pre">MLTSA</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ans</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoder</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">drop_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Average'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Normal'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#MLTSA_tf.MLTSA" title="Permalink to this definition"></a></dt>
 <dd><p>Function to apply the Machine Learning Transition State Analysis to a given training dataset/answers and trained
 model. It calculates the Gloabl Means and re-calculates accuracy for predicting each outcome.</p>
 <dl class="field-list simple">
@@ -118,8 +124,8 @@ model. It calculates the Gloabl Means and re-calculates accuracy for predicting 
 </dd></dl>
 
 <dl class="py function">
-<dt id="MLTSA_tf.MLTSA_Plot">
-<code class="sig-prename descclassname"><span class="pre">MLTSA_tf.</span></code><code class="sig-name descname"><span class="pre">MLTSA_Plot</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">FR</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dataset_og</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pots</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">errorbar</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#MLTSA_tf.MLTSA_Plot" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="MLTSA_tf.MLTSA_Plot">
+<span class="sig-prename descclassname"><span class="pre">MLTSA_tf.</span></span><span class="sig-name descname"><span class="pre">MLTSA_Plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">FR</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dataset_og</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pots</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">errorbar</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#MLTSA_tf.MLTSA_Plot" title="Permalink to this definition"></a></dt>
 <dd><p>Wrapper for plotting the results from the Accuracy Drop procedure</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -147,13 +153,14 @@ on the different data.</p>
 to try on the different data.</p>
 <p>Note this is built on TensorFlow 2 code and may not work on earlier versions.</p>
 <p>In this snippet the architecture is built on the sequential “build” of TF.</p>
-<span class="target" id="module-TF_old_LSTM"></span><span class="target" id="module-TF_old_MLP"></span></div>
+<span class="target" id="module-TF_old_LSTM"></span><span class="target" id="module-TF_old_MLP"></span></section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="sklearnfunctions.html" class="btn btn-neutral float-left" title="Scikit-Learn Integrated MLTSA module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="twodpots.html" class="btn btn-neutral float-right" title="TwoD: application programming interface (API)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

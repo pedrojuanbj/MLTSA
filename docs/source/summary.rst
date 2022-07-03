@@ -9,6 +9,7 @@ Summary of MLTSA's Modules
     :recursive:
 
     OneD_pot_data
+    TwoD_pot_data
     CV_from_MD
     MLTSA_sk
     models
@@ -16,3 +17,4 @@ Summary of MLTSA's Modules
     TF_2_LSTM
     TF_2_MLP
     TF_2_RNN
+

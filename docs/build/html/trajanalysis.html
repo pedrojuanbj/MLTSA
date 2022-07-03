@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Molecular Dynamics Analysis tool for MLTSA &mdash; MLTSA 0.0.4 documentation</title><link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <title>Molecular Dynamics Analysis tool for MLTSA &mdash; MLTSA 0.0.7 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
-  <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
@@ -35,7 +38,7 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption"><span class="caption-text">Contents:</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="summary.html">Summary of MLTSA’s Modules</a></li>
 <li class="toctree-l1"><a class="reference internal" href="examples.html">Jupyter Notebook Examples</a></li>
@@ -43,6 +46,8 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Molecular Dynamics Analysis tool for MLTSA</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sklearnfunctions.html">Scikit-Learn Integrated MLTSA module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tffunctions.html">TensorFlow Integrated MLTSA module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="twodpots.html">TwoD: application programming interface (API)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="twodpots_source.html">Source code functions for the TwoD generation</a></li>
 </ul>
 
         </div>
@@ -93,8 +98,8 @@
     text-align: unset;
 }
 </style>
-<div class="section" id="molecular-dynamics-analysis-tool-for-mltsa">
-<h1>Molecular Dynamics Analysis tool for MLTSA<a class="headerlink" href="#molecular-dynamics-analysis-tool-for-mltsa" title="Permalink to this headline">¶</a></h1>
+<section id="molecular-dynamics-analysis-tool-for-mltsa">
+<h1>Molecular Dynamics Analysis tool for MLTSA<a class="headerlink" href="#molecular-dynamics-analysis-tool-for-mltsa" title="Permalink to this headline"></a></h1>
 <p>This package called “MD_DATA” has all functions related with the analysis of Molecular Dynamics trajectories prior to
 applying MLTSA on MD data. It includes CV selection, CV calculation for dataset generation and binary label
 classification similar to IN/OUT in ligand unbinding by manually defining the relevant distances for labeling.
@@ -102,13 +107,13 @@ Everything is implemented using the mdtraj package, it can read the same topolog
 <span class="target" id="module-CV_from_MD"></span><p>This module will encompass the code for analyzing the molecular dynamics generated on the simulations as dcd files.
 It also takes care of the CV generation for further feeding into the MLTSA pipeline.</p>
 <dl class="py class">
-<dt id="CV_from_MD.CVs">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">CV_from_MD.</span></code><code class="sig-name descname"><span class="pre">CVs</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">top</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#CV_from_MD.CVs" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="CV_from_MD.CVs">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">CV_from_MD.</span></span><span class="sig-name descname"><span class="pre">CVs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">top</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#CV_from_MD.CVs" title="Permalink to this definition"></a></dt>
 <dd><p>This class is a container of the Collective Variables defined to calculate on mdtraj later.
 It contains different methods for CV definition to later on calculate for the MLTSA.</p>
 <dl class="py method">
-<dt id="CV_from_MD.CVs.define_variables">
-<code class="sig-name descname"><span class="pre">define_variables</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">CV_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">custom_selection_string</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">CV_indices</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#CV_from_MD.CVs.define_variables" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="CV_from_MD.CVs.define_variables">
+<span class="sig-name descname"><span class="pre">define_variables</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">CV_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">custom_selection_string</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">CV_indices</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#CV_from_MD.CVs.define_variables" title="Permalink to this definition"></a></dt>
 <dd><p>This method defines the variables depending on the type of CV passed, labels such as ‘all’ for example, will
 calculate every interatomic distance between all atoms. Custom CVs can be passed in with CV_indices=list
 and CV_type = “custom_CVs” as pairs of atom indices to calculate distances on. A custom_selection_string
@@ -137,14 +142,14 @@ select the atom indices and use them for CV definition.</p></li>
 </dd></dl>
 
 <dl class="py class">
-<dt id="CV_from_MD.MDs">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">CV_from_MD.</span></code><code class="sig-name descname"><span class="pre">MDs</span></code><a class="headerlink" href="#CV_from_MD.MDs" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="CV_from_MD.MDs">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">CV_from_MD.</span></span><span class="sig-name descname"><span class="pre">MDs</span></span><a class="headerlink" href="#CV_from_MD.MDs" title="Permalink to this definition"></a></dt>
 <dd><p>Analyzer wrapper based on mdtraj, that can generate distances out of a previously defined CVs object with
 calculate_CVs(). It can also make use of a list of dcd files and topology along with a set of selection strings
 and upper/lower values to check for an automatic labeling of simulations with label_simulations().</p>
 <dl class="py method">
-<dt id="CV_from_MD.MDs.calculate_CVs">
-<code class="sig-name descname"><span class="pre">calculate_CVs</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">CVs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dcd_paths</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loading</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'normal'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#CV_from_MD.MDs.calculate_CVs" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="CV_from_MD.MDs.calculate_CVs">
+<span class="sig-name descname"><span class="pre">calculate_CVs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">CVs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dcd_paths</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loading</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'normal'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">iter_chunk</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#CV_from_MD.MDs.calculate_CVs" title="Permalink to this definition"></a></dt>
 <dd><p>Method for calculating the Collective Variables previously defined by passing on a CVs object along the
 list of trajectories to use and calculate the data. It has different methods for loading depending on the
 complexity of the dataset to analyze.</p>
@@ -164,8 +169,8 @@ calculate the distances.</p></li>
 </dd></dl>
 
 <dl class="py method">
-<dt id="CV_from_MD.MDs.label_simulations">
-<code class="sig-name descname"><span class="pre">label_simulations</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">top</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dcd_paths</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">selection_strings_to_label</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">upper_lim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lower_lim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loading</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'normal'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plotting</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_plots</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_labels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_plots</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#CV_from_MD.MDs.label_simulations" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="CV_from_MD.MDs.label_simulations">
+<span class="sig-name descname"><span class="pre">label_simulations</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">top</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dcd_paths</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">selection_strings_to_label</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">upper_lim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lower_lim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loading</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'normal'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end_perc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.25</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">get_sum</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plotting_sum</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plotting_all</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_plots</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_labels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_plots</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#CV_from_MD.MDs.label_simulations" title="Permalink to this definition"></a></dt>
 <dd><p>Method for the labeling of a given set of trajectory files on the desired string selections to check and the
 upper/lower limit to classify. It can also plot figures with the values for each of the distances throughout
 the trajectories and save them in the specified path.</p>
@@ -203,7 +208,7 @@ dcd_paths list.</p>
 
 </dd></dl>
 
-</div>
+</section>
 
 
            </div>

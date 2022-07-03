@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Jupyter Notebook Examples &mdash; MLTSA 0.0.4 documentation</title><link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <title>Jupyter Notebook Examples &mdash; MLTSA 0.0.7 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
-  <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
@@ -16,7 +19,7 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Analytical One-Dimensional model module" href="onedfunctions.html" />
+    <link rel="next" title="Tensorflow training 1D potential example" href="demos/OneD_MLP_example.html" />
     <link rel="prev" title="TF_2_RNN" href="_autosummary/TF_2_RNN.html" /> 
 </head>
 
@@ -35,11 +38,15 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption"><span class="caption-text">Contents:</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="summary.html">Summary of MLTSA’s Modules</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Jupyter Notebook Examples</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#oned-example">OneD Example</a><ul class="simple">
+<li class="toctree-l2"><a class="reference internal" href="#oned-jupyter-notebooks-for-different-examples">OneD Jupyter Notebooks for different Examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="demos/OneD_MLP_example.html">Tensorflow training 1D potential example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="demos/OneD_MLTSA_sklearn.html">Basic 1D potential example using Scikit-Learn</a></li>
+<li class="toctree-l3"><a class="reference internal" href="demos/testing_TF_architectures.html">Testing ML architectures implemented on the MLTSA package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="demos/MLTSA_through_time.html">MLTSA vs Feature Permutations</a></li>
 </ul>
 </li>
 </ul>
@@ -48,6 +55,8 @@
 <li class="toctree-l1"><a class="reference internal" href="trajanalysis.html">Molecular Dynamics Analysis tool for MLTSA</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sklearnfunctions.html">Scikit-Learn Integrated MLTSA module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tffunctions.html">TensorFlow Integrated MLTSA module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="twodpots.html">TwoD: application programming interface (API)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="twodpots_source.html">Source code functions for the TwoD generation</a></li>
 </ul>
 
         </div>
@@ -98,21 +107,28 @@
     text-align: unset;
 }
 </style>
-<div class="section" id="jupyter-notebook-examples">
-<h1>Jupyter Notebook Examples<a class="headerlink" href="#jupyter-notebook-examples" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="oned-example">
-<h2>OneD Example<a class="headerlink" href="#oned-example" title="Permalink to this headline">¶</a></h2>
+<section id="jupyter-notebook-examples">
+<h1>Jupyter Notebook Examples<a class="headerlink" href="#jupyter-notebook-examples" title="Permalink to this headline"></a></h1>
+<section id="oned-jupyter-notebooks-for-different-examples">
+<h2>OneD Jupyter Notebooks for different Examples<a class="headerlink" href="#oned-jupyter-notebooks-for-different-examples" title="Permalink to this headline"></a></h2>
 <div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="demos/OneD_MLP_example.html">Tensorflow training 1D potential example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="demos/OneD_MLTSA_sklearn.html">Basic 1D potential example using Scikit-Learn</a></li>
+<li class="toctree-l1"><a class="reference internal" href="demos/testing_TF_architectures.html">Testing ML architectures implemented on the MLTSA package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="demos/MLTSA_through_time.html">MLTSA vs Feature Permutations</a></li>
+</ul>
 </div>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="_autosummary/TF_2_RNN.html" class="btn btn-neutral float-left" title="TF_2_RNN" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="onedfunctions.html" class="btn btn-neutral float-right" title="Analytical One-Dimensional model module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="demos/OneD_MLP_example.html" class="btn btn-neutral float-right" title="Tensorflow training 1D potential example" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
