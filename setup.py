@@ -10,15 +10,17 @@ classifiers = [
 
 setup(
     name='MLTSA',
-    version='0.0.7',
-    description='Machine Learning Transition State Analysis',
+    version='0.0.8',
+    description='Machine Learning Transition State Analysis package',
     long_description='',
-    url='',
+    url='https://mltsa.readthedocs.io/en/latest/',
     author='Pedro Buigues',
     author_email='pedrojuanbj@gmail.com',
     license="MIT",
     classifiers=classifiers,
     keywords="MLTSA",
     packages=find_packages(),
-    install_requires=["numpy", "scipy", "matplotlib", "tqdm", "scikit-learn", "tensorflow"]
+    install_requires=[]
 )
+
+#"numpy", "scipy", "matplotlib", "tqdm", "scikit-learn"

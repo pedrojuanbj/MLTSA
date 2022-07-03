@@ -1,18 +1,20 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Scikit-Learn Integrated MLTSA module &mdash; MLTSA 0.0.4 documentation</title><link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <title>Scikit-Learn Integrated MLTSA module &mdash; MLTSA 0.0.7 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
-  <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
-        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -35,7 +37,7 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption"><span class="caption-text">Contents:</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="summary.html">Summary of MLTSA’s Modules</a></li>
 <li class="toctree-l1"><a class="reference internal" href="examples.html">Jupyter Notebook Examples</a></li>
@@ -43,6 +45,8 @@
 <li class="toctree-l1"><a class="reference internal" href="trajanalysis.html">Molecular Dynamics Analysis tool for MLTSA</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Scikit-Learn Integrated MLTSA module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tffunctions.html">TensorFlow Integrated MLTSA module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="twodpots.html">TwoD: application programming interface (API)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="twodpots_source.html">Source code functions for the TwoD generation</a></li>
 </ul>
 
         </div>
@@ -69,36 +73,12 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  
-<style>
-/* CSS overrides for sphinx_rtd_theme */
-
-/* 24px margin */
-.nbinput.nblast.container,
-.nboutput.nblast.container {
-    margin-bottom: 19px;  /* padding has already 5px */
-}
-
-/* ... except between code cells! */
-.nblast.container + .nbinput.container {
-    margin-top: -19px;
-}
-
-.admonition > p:before {
-    margin-right: 4px;  /* make room for the exclamation icon */
-}
-
-/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
-.math {
-    text-align: unset;
-}
-</style>
-<div class="section" id="scikit-learn-integrated-mltsa-module">
-<h1>Scikit-Learn Integrated MLTSA module<a class="headerlink" href="#scikit-learn-integrated-mltsa-module" title="Permalink to this headline">¶</a></h1>
+  <section id="scikit-learn-integrated-mltsa-module">
+<h1>Scikit-Learn Integrated MLTSA module<a class="headerlink" href="#scikit-learn-integrated-mltsa-module" title="Permalink to this headline"></a></h1>
 <p>These are the functions that are integrated with sklearn for MLTSA and training of ML models.</p>
 <span class="target" id="module-models"></span><dl class="py function">
-<dt id="models.SKL_Train">
-<code class="sig-prename descclassname"><span class="pre">models.</span></code><code class="sig-name descname"><span class="pre">SKL_Train</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">clf</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Y</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#models.SKL_Train" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="models.SKL_Train">
+<span class="sig-prename descclassname"><span class="pre">models.</span></span><span class="sig-name descname"><span class="pre">SKL_Train</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">clf</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Y</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#models.SKL_Train" title="Permalink to this definition"></a></dt>
 <dd><p>Wrapper to train any machine learning model/classifier from the Scikit-Learn suite which uses fit() to train and
 predict() to predict the outcome values.</p>
 <dl class="field-list simple">
@@ -116,8 +96,8 @@ predict() to predict the outcome values.</p>
 </dd></dl>
 
 <span class="target" id="module-MLTSA_sk"></span><dl class="py function">
-<dt id="MLTSA_sk.MLTSA">
-<code class="sig-prename descclassname"><span class="pre">MLTSA_sk.</span></code><code class="sig-name descname"><span class="pre">MLTSA</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ans</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">drop_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Average'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Normal'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#MLTSA_sk.MLTSA" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="MLTSA_sk.MLTSA">
+<span class="sig-prename descclassname"><span class="pre">MLTSA_sk.</span></span><span class="sig-name descname"><span class="pre">MLTSA</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ans</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">drop_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Average'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Normal'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#MLTSA_sk.MLTSA" title="Permalink to this definition"></a></dt>
 <dd><p>Function to apply the Machine Learning Transition State Analysis to a given training dataset/answers and trained
 model. It calculates the Gloabl Means and re-calculates accuracy for predicting each outcome.</p>
 <dl class="field-list simple">
@@ -137,8 +117,8 @@ model. It calculates the Gloabl Means and re-calculates accuracy for predicting 
 </dd></dl>
 
 <dl class="py function">
-<dt id="MLTSA_sk.MLTSA_Plot">
-<code class="sig-prename descclassname"><span class="pre">MLTSA_sk.</span></code><code class="sig-name descname"><span class="pre">MLTSA_Plot</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">FR</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dataset_og</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pots</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">errorbar</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#MLTSA_sk.MLTSA_Plot" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="MLTSA_sk.MLTSA_Plot">
+<span class="sig-prename descclassname"><span class="pre">MLTSA_sk.</span></span><span class="sig-name descname"><span class="pre">MLTSA_Plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">FR</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dataset_og</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pots</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">errorbar</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#MLTSA_sk.MLTSA_Plot" title="Permalink to this definition"></a></dt>
 <dd><p>Wrapper for plotting the results from the Accuracy Drop procedure</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -155,7 +135,7 @@ model. It calculates the Gloabl Means and re-calculates accuracy for predicting 
 </dl>
 </dd></dl>
 
-</div>
+</section>
 
 
            </div>

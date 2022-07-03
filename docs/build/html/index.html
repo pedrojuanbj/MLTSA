@@ -1,18 +1,20 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Welcome to MLTSA’s documentation! &mdash; MLTSA 0.0.4 documentation</title><link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <title>Welcome to MLTSA’s documentation! &mdash; MLTSA 0.0.7 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
-  <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
-        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -34,7 +36,7 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption"><span class="caption-text">Contents:</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="summary.html">Summary of MLTSA’s Modules</a></li>
 <li class="toctree-l1"><a class="reference internal" href="examples.html">Jupyter Notebook Examples</a></li>
@@ -42,6 +44,8 @@
 <li class="toctree-l1"><a class="reference internal" href="trajanalysis.html">Molecular Dynamics Analysis tool for MLTSA</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sklearnfunctions.html">Scikit-Learn Integrated MLTSA module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tffunctions.html">TensorFlow Integrated MLTSA module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="twodpots.html">TwoD: application programming interface (API)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="twodpots_source.html">Source code functions for the TwoD generation</a></li>
 </ul>
 
         </div>
@@ -68,37 +72,13 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  
-<style>
-/* CSS overrides for sphinx_rtd_theme */
-
-/* 24px margin */
-.nbinput.nblast.container,
-.nboutput.nblast.container {
-    margin-bottom: 19px;  /* padding has already 5px */
-}
-
-/* ... except between code cells! */
-.nblast.container + .nbinput.container {
-    margin-top: -19px;
-}
-
-.admonition > p:before {
-    margin-right: 4px;  /* make room for the exclamation icon */
-}
-
-/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
-.math {
-    text-align: unset;
-}
-</style>
-<div class="section" id="welcome-to-mltsa-s-documentation">
-<h1>Welcome to MLTSA’s documentation!<a class="headerlink" href="#welcome-to-mltsa-s-documentation" title="Permalink to this headline">¶</a></h1>
+  <section id="welcome-to-mltsa-s-documentation">
+<h1>Welcome to MLTSA’s documentation!<a class="headerlink" href="#welcome-to-mltsa-s-documentation" title="Permalink to this headline"></a></h1>
 <p>MLTSA is a python-based package which enables users to apply the Machine Learning Transition State Analysis
-from <a class="reference external" href="https://doi.org/10.1101/2021.09.08.459492">https://doi.org/10.1101/2021.09.08.459492</a> to any given data with an array of ML models, as well as generating an
+from <a class="reference external" href="https://doi.org/10.1021/acs.jctc.1c00924">https://doi.org/10.1021/acs.jctc.1c00924</a> to any given data with an array of ML models, as well as generating an
 analytical model on demand for detecting relevant features in a dataset.</p>
 <div class="toctree-wrapper compound">
-<p class="caption"><span class="caption-text">Contents:</span></p>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="summary.html">Summary of MLTSA’s Modules</a></li>
 <li class="toctree-l1"><a class="reference internal" href="examples.html">Jupyter Notebook Examples</a></li>
@@ -106,22 +86,32 @@ analytical model on demand for detecting relevant features in a dataset.</p>
 <li class="toctree-l1"><a class="reference internal" href="trajanalysis.html">Molecular Dynamics Analysis tool for MLTSA</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sklearnfunctions.html">Scikit-Learn Integrated MLTSA module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tffunctions.html">TensorFlow Integrated MLTSA module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="twodpots.html">TwoD: application programming interface (API)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="twodpots_source.html">Source code functions for the TwoD generation</a></li>
 </ul>
 </div>
-<div class="section" id="mltsa">
-<h2>MLTSA<a class="headerlink" href="#mltsa" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="info">
-<h3>Info<a class="headerlink" href="#info" title="Permalink to this headline">¶</a></h3>
-<p>This is a Python module to apply the MLTSA approach for relevant CV identification on Molecular Dynamics data using both Sklearn and TensorFlow modules.</p>
-<p>&gt; examples : Contains files with the easy to call 1D/2D/MD examples to generate data or play around with it as tests for the approach.</p>
-<p>&gt; MLTSA_sklearn : Contains the Scikit-Learn integrated functions to apply MLTSA on data.</p>
-<p>&gt; MLTSA_tensorflow: Contains the set of functions and different models built on TensorFlow to apply MLTSA on data.</p>
-</div>
-<div class="section" id="usage">
-<h3>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h3>
-</div>
-<div class="section" id="installation">
-<h3>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h3>
+<section id="mltsa-machine-learning-transition-state-analysis-repository">
+<h2>MLTSA: Machine Learning Transition State Analysis repository<a class="headerlink" href="#mltsa-machine-learning-transition-state-analysis-repository" title="Permalink to this headline"></a></h2>
+<section id="introduction">
+<h3>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline"></a></h3>
+<p>This is a Python package to apply the MLTSA approach for relevant CV identification on Molecular Dynamics data using both Sklearn and TensorFlow modules.It also includes both a suite of 1D Potential Analytical model feature generation module for light testing and a suite of different 2D potential shapes (Spiral, Z-shaped) generation as well as the posterior feature generation by 1D projections of the 2D data. In this package you will find:</p>
+<ul class="simple">
+<li><p>Data Generation Module (<strong>MLTSA_datasets</strong>) : Contains files with the easy to call 1D/2D/MD examples to generate data or play around with it as tests for the approach.</p></li>
+<li><p>Scikit-Learn-based ML models and Feature Reduction module (<strong>MLTSA_sklearn</strong>) : Contains the Scikit-Learn integrated functions to apply MLTSA on data.</p></li>
+<li><p>TensorFlow-based ML models and Feature Reduction module (<strong>MLTSA_tensorflow</strong>): Contains the set of functions and different models built on TensorFlow to apply MLTSA on data.</p></li>
+</ul>
+</section>
+<section id="usage">
+<h3>Usage<a class="headerlink" href="#usage" title="Permalink to this headline"></a></h3>
+<ul class="simple">
+<li><p>Example OneD</p></li>
+<li><p>Example TwoD</p></li>
+<li><p>Example Train</p></li>
+<li><p>Example MLTSA</p></li>
+</ul>
+</section>
+<section id="installation">
+<h3>Installation<a class="headerlink" href="#installation" title="Permalink to this headline"></a></h3>
 <p>To use MLTSA, first install it using pip:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp gp-VirtualEnv">(.venv)</span> <span class="gp">$ </span>pip install MLTSA
 </pre></div>
@@ -130,17 +120,17 @@ analytical model on demand for detecting relevant features in a dataset.</p>
 <p class="admonition-title">Note</p>
 <p>This project is under active development, do not expect a stable version, code is provided as is.</p>
 </div>
-</div>
-</div>
-</div>
-<div class="section" id="indices-and-tables">
-<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
+</section>
+</section>
+</section>
+<section id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline"></a></h1>
 <ul class="simple">
 <li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
 <li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
 <li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
 </ul>
-</div>
+</section>
 
 
            </div>

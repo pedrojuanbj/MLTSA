@@ -7,7 +7,7 @@ Welcome to MLTSA's documentation!
 =================================
 
 MLTSA is a python-based package which enables users to apply the Machine Learning Transition State Analysis
-from https://doi.org/10.1101/2021.09.08.459492 to any given data with an array of ML models, as well as generating an
+from https://doi.org/10.1021/acs.jctc.1c00924 to any given data with an array of ML models, as well as generating an
 analytical model on demand for detecting relevant features in a dataset.
 
 
@@ -27,6 +27,9 @@ analytical model on demand for detecting relevant features in a dataset.
 
    tffunctions.rst
 
+   twodpots.rst
+
+   twodpots_source.rst
 
 .. include:: ../../README.rst
 

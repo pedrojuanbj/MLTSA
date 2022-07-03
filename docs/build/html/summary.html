@@ -1,18 +1,20 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Summary of MLTSA’s Modules &mdash; MLTSA 0.0.4 documentation</title><link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <title>Summary of MLTSA’s Modules &mdash; MLTSA 0.0.7 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
-  <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
-        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -35,10 +37,11 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption"><span class="caption-text">Contents:</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Summary of MLTSA’s Modules</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="_autosummary/OneD_pot_data.html">OneD_pot_data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_autosummary/TwoD_pot_data.html">TwoD_pot_data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="_autosummary/CV_from_MD.html">CV_from_MD</a></li>
 <li class="toctree-l2"><a class="reference internal" href="_autosummary/MLTSA_sk.html">MLTSA_sk</a></li>
 <li class="toctree-l2"><a class="reference internal" href="_autosummary/models.html">models</a></li>
@@ -53,6 +56,8 @@
 <li class="toctree-l1"><a class="reference internal" href="trajanalysis.html">Molecular Dynamics Analysis tool for MLTSA</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sklearnfunctions.html">Scikit-Learn Integrated MLTSA module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tffunctions.html">TensorFlow Integrated MLTSA module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="twodpots.html">TwoD: application programming interface (API)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="twodpots_source.html">Source code functions for the TwoD generation</a></li>
 </ul>
 
         </div>
@@ -79,32 +84,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  
-<style>
-/* CSS overrides for sphinx_rtd_theme */
-
-/* 24px margin */
-.nbinput.nblast.container,
-.nboutput.nblast.container {
-    margin-bottom: 19px;  /* padding has already 5px */
-}
-
-/* ... except between code cells! */
-.nblast.container + .nbinput.container {
-    margin-top: -19px;
-}
-
-.admonition > p:before {
-    margin-right: 4px;  /* make room for the exclamation icon */
-}
-
-/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
-.math {
-    text-align: unset;
-}
-</style>
-<div class="section" id="summary-of-mltsa-s-modules">
-<h1>Summary of MLTSA’s Modules<a class="headerlink" href="#summary-of-mltsa-s-modules" title="Permalink to this headline">¶</a></h1>
+  <section id="summary-of-mltsa-s-modules">
+<h1>Summary of MLTSA’s Modules<a class="headerlink" href="#summary-of-mltsa-s-modules" title="Permalink to this headline"></a></h1>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 10%" />
@@ -114,30 +95,33 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="onedfunctions.html#module-OneD_pot_data" title="OneD_pot_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">OneD_pot_data</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="trajanalysis.html#module-CV_from_MD" title="CV_from_MD"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CV_from_MD</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="twodpots.html#module-TwoD_pot_data" title="TwoD_pot_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TwoD_pot_data</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="trajanalysis.html#module-CV_from_MD" title="CV_from_MD"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CV_from_MD</span></code></a></p></td>
 <td><p>This module will encompass the code for analyzing the molecular dynamics generated on the simulations as dcd files.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="sklearnfunctions.html#module-MLTSA_sk" title="MLTSA_sk"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MLTSA_sk</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="sklearnfunctions.html#module-MLTSA_sk" title="MLTSA_sk"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MLTSA_sk</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="sklearnfunctions.html#module-models" title="models"><code class="xref py py-obj docutils literal notranslate"><span class="pre">models</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="sklearnfunctions.html#module-models" title="models"><code class="xref py py-obj docutils literal notranslate"><span class="pre">models</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="tffunctions.html#module-MLTSA_tf" title="MLTSA_tf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MLTSA_tf</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="tffunctions.html#module-MLTSA_tf" title="MLTSA_tf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MLTSA_tf</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="tffunctions.html#module-TF_2_LSTM" title="TF_2_LSTM"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TF_2_LSTM</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="tffunctions.html#module-TF_2_LSTM" title="TF_2_LSTM"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TF_2_LSTM</span></code></a></p></td>
 <td><p>This snippet of code is for the set of functions we will use for the LSTM architecture to try on the different data.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="tffunctions.html#module-TF_2_MLP" title="TF_2_MLP"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TF_2_MLP</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="tffunctions.html#module-TF_2_MLP" title="TF_2_MLP"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TF_2_MLP</span></code></a></p></td>
 <td><p>This snippet of code is for the set of functions we will use for the basic Multi-Layer Perceptron architecture to try on the different data.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="tffunctions.html#module-TF_2_RNN" title="TF_2_RNN"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TF_2_RNN</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="tffunctions.html#module-TF_2_RNN" title="TF_2_RNN"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TF_2_RNN</span></code></a></p></td>
 <td><p>This snippet of code is for the set of functions we will use for the different Recurrent Neural Networks architectures to try on the different data.</p></td>
 </tr>
 </tbody>
 </table>
-</div>
+</section>
 
 
            </div>
