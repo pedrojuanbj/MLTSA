@@ -12,6 +12,7 @@
 #
 import os
 import sys
+sys.path.insert(0, os.path.abspath('../../.'))
 sys.path.insert(0, os.path.abspath('../../MLTSA_datasets'))
 sys.path.insert(0, os.path.abspath('../../MLTSA_datasets/OneD_pot'))
 sys.path.insert(0, os.path.abspath('../../MLTSA_datasets/TwoD_pot'))
@@ -38,7 +39,7 @@ release = '0.0.7'
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
-extensions = ['sphinx.ext.autodoc', 'sphinx.ext.autosummary']
+extensions = ['sphinx.ext.autodoc', 'sphinx.ext.autosummary', "nbsphinx"]
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -49,7 +50,13 @@ templates_path = ['_templates']
 exclude_patterns = ["_build", "_templates", "_examples"]
 
 source_suffix = ['.rst', '.md']
+# source_suffix = {
+#     '.rst': 'restructuredtext',
+#     '.ipynb': 'myst-nb',
+#     '.myst': 'myst-nb',
+# }
 
+nbsphinx_execute = 'never'
 autosummary_generate = True  # Turn on sphinx.ext.autosummary
 
 # -- Options for HTML output -------------------------------------------------

@@ -1,1 +1,2 @@
+nbsphinx
 sphinx-rtd-theme==1.0.0
