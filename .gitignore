@@ -1,2 +1,5 @@
 MLTSA_datasets/TwoD_pot/src/__pycache__/
 MLTSA_datasets/TwoD_pot/__pycache__/
+docs/build/html/_static/alabaster.css
+docs/build/html/_static/custom.css
+docs/build/html/_static/underscore-1.13.1.js
