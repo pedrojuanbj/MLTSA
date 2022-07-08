@@ -144,9 +144,10 @@ def data_process_full(obj, raw_data, fsize, visual=False):
 
 #-- Code for Data Projection --#
 def data_projector(type, n_features=100):
-    """data_projector A function to generate the projector object with respect to corresponding data potential type
-       Including the following potential types: 's2', 's3' or 'z'
-       Currently there is no difference for those potentials considering projectors
+    """data_projector A function to generate the projector object with respect to different sampling method
+       Including the following sample method: 'rand' and 'grid'
+       'rand': do the sampling randomly, which provide random coeffs for projector
+       'grid': do the sampling in grid wise, which would yield same difference between coeffs
 
     :param type: type of potential that the data generates from, indicating how to tone the projector's param\
  automatically
@@ -156,12 +157,13 @@ def data_projector(type, n_features=100):
     :return: object of Projector Class
     :rtype: Class Projector
     """    
-    if type == 's2':
+    if type == 'rand':
         projector = Projector(n_features=n_features)
-    elif type == 's3':
+    elif type == 'grid':
         projector = Projector(n_features=n_features)
-    elif type == 'z':
-        projector = Projector(n_features=n_features)
+        projector.coeff = np.linspace(0, 2*np.pi, num=n_features) # Re-assign the coeff in grid-wise
+    else:
+        print("Unrecognized type of projector, select from rand or grid")
     return projector
 
 def data_projection(obj, data):
