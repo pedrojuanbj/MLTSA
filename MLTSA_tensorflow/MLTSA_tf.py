@@ -8,13 +8,16 @@ def MLTSA(data, ans, model, encoder, drop_mode="Average", data_mode="Normal"):
     Function to apply the Machine Learning Transition State Analysis to a given training dataset/answers and trained
     model. It calculates the Gloabl Means and re-calculates accuracy for predicting each outcome.
 
-    :param data: Training data used for training the ML model. Must have shape (samples, features)
+    :param data: Training data used for training the ML model. Must have shape (samples, features, n_steps(time))
     :type data: list
     :param ans: Outcomes for each sample on "data". Shape must be (samples)
     :type ans: list
-    :param model:
-    :param drop_mode:
-    :param data_mode:
+    :param model: Core model to be used in the predicting of results
+    :type model: class object(tensor flow compiled models)
+    :param drop_mode: Flag indicating different drop modes, optional, default as 'Average'#TODO: Check with pedro
+    :type drop_mode: str
+    :param data_mode: Flag indicating different data structures, optional, default as 'Normal'
+    :type data_mode: str
     :return:
 
     """
@@ -23,38 +26,45 @@ def MLTSA(data, ans, model, encoder, drop_mode="Average", data_mode="Normal"):
         data = data[:, :-1, :]
 
     # Calculating the global means
-    means_per_sim = np.mean(data.T, axis=0)
-    gmeans = np.mean(means_per_sim, axis=1)
-    temp_sim_data = np.copy(data)
+    means_per_sim = np.mean(data.T, axis=0) #(n_features, n_samples)
+    gmeans = np.mean(means_per_sim, axis=1) #(n_features)
+    temp_sim_data = np.copy(data) #(n_samples, n_features, n_step)
+    #DEBUG
     # print(temp_sim_data.shape)
 
     # Swapping the values and predicting for the FR
     FR = []
-    for y, data in tqdm(enumerate(temp_sim_data)):
+    for y, data in tqdm(enumerate(temp_sim_data)): # Looping through different samples
+	# y: index of temp_sim_data for each data in temp_sim_data
+	# data: One term of data in temp_sim_data array #TODO: Change the name 'data' here since it duplicates input args
         mean_sim = []
-        for n, mean in enumerate(gmeans):
-            tmp_dat = np.copy(data)
-            tmp_dat[n ,:] = mean
-            # TODO Implement a way to reverse the labels back without needing to pass the encoder
-            yy = model(tmp_dat.T, training=False)
-            yy = encoder.inverse_transform(yy)
-            res = yy == ans[y]
-            mean_sim.append(res)
-        FR.append(mean_sim)
+        for n, mean in enumerate(gmeans): # Looping through different features
+	    # n: index of gmeans for different features
+	    # mean: global mean of each feature
+            tmp_dat = np.copy(data) #(n_features, n_steps)
+            tmp_dat[n ,:] = mean # Change the nth features to global mean value ####CORE_ACTION####SWAPPING####
+            # TODO Implement a way to reverse the labels back without needing to pass the encoder #TODO: Solve by sum(index * value) => index
+            yy = model(tmp_dat.T, training=False) # Use trained model to give prediction(get output of the model), shape: (n_steps, n_labels)
+            yy = encoder.inverse_transform(yy) # Transfer the one-hot encoded labels to the categorical labels, i.e. [0,0,1] -> 2; [1,0,0] -> 0, etc.
+            res = yy == ans[y] # Calculate the accurate results, shape: (n_steps, 1)
+            mean_sim.append(res) # Shape when loop end: (n_features, n_steps, 1)
+        FR.append(mean_sim) # Shape when loop end: (n_samples, n_features, n_steps, 1)
 
+    # MEDIAN IS CURRENTLY OUT OF FUNCTIONALITY, SHOULD BE FIXED LATER AS TODO
     if drop_mode == "Median":
-        median = np.median(np.array(FR).T, axis=0)
-        median = np.median(median, axis=0)
+        median = np.median(np.array(FR).T, axis=0) # Restructure the dimension of data, shape:(n_steps, n_features, n_samples)
+        median = np.median(median, axis=0) # Median value of chosen time steps' result, shape:(n_features, n_samples)
         dv_from_median = []
-        for n, M in enumerate(median):
-            dv_from_median.append(abs(M - np.array(FR)[n].T))
+        for n, M in enumerate(median): # Loop through n_features
+            dv_from_median.append(abs(M - np.array(FR)[n].T)) #TODO: Tested bugs here, should be changed later
         fr = np.mean(np.array(dv_from_median), axis=1)
         fr = np.mean(fr, axis=0)
 
 
     if drop_mode == "Average":
-        fr_per_sim = np.mean(np.array(FR).T, axis=0)
-        fr = np.mean(fr_per_sim, axis=0)
+        fr_per_sim = np.mean(np.array(FR).T, axis=0) # Restructure the dimension of data, shape:(n_steps, n_features, n_samples)
+        fr = np.mean(fr_per_sim, axis=0) # Calculate the mean accuracy drop for each feature of each sample
+					 # Shape: (n_features, n_samples)
 
     return fr
 
@@ -68,7 +78,7 @@ def MLTSA_Plot(FR, dataset_og, pots, errorbar=True):
     :param dataset_og: Original dataset object class used for generating the data
     :param pots: Original potentials object class used for generating the data
     :param errorbar: Flag for including or not including the errobars in case of using replicas.
-    :return:
+    :return: return nothing
 
     """
     from matplotlib.colors import LinearSegmentedColormap
