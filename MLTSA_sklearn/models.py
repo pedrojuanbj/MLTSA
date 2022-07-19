@@ -18,10 +18,11 @@ def SKL_Train(clf, X, Y):
     Wrapper to train any machine learning model/classifier from the Scikit-Learn suite which uses fit() to train and
     predict() to predict the outcome values.
 
-    :param clf:
-    :param X:
-    :param Y:
-    :return:
+    :param clf: built model for training, typically model template imported from sklearn
+    :type clf: sklearn models class
+    :param X: Input data, in shape of (n_samples * n_steps, n_features)
+    :param Y: Input labels for the data, in shape of (n_samples * n_steps,)
+    :return: trained model, training accuracy, testing accuracy.
     """
 
     st = time.time()
