@@ -1,3 +1,6 @@
+""" utils Functions of potential and derivatives, for use of generating, could be changed by advanced user
+
+"""
 import numpy as np
 import numba as nb
 from numpy import exp, sin, cos

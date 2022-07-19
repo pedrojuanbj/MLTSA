@@ -14,9 +14,22 @@ from tensorflow.keras.models import Sequential
 
 
 class build_MLP(object):
-
+"""
+build_MLP A factory class that ensemble different Multi Layer Perceptron models
+"""
     def __init__(self, n_steps, n_features, n_labels, type="vanilla"):
+	"""
+	initialize the build_MLP class
 
+	:param n_steps: Number of steps of input trajectory, shape the input layer
+	:type n_steps: int
+	:param n_features: Number of features of the input data, shape the input layer
+	:type n_features: int
+	:param n_labels: Number of labels of the input data, shape the output layer
+	:type n_labels: int
+	:param type: type of the models to be built, optional, default as 'vanilla'
+	:type type: str
+	"""
         self.type = type
         self.n_labels = n_labels
         self.n_features = n_features
@@ -33,6 +46,14 @@ class build_MLP(object):
         return
 
     def vanilla(self, n_units=100, dropout=0.1):
+	"""
+	classic model, also called 'vanilla'
+
+	:param n_units: Number of nerons of the hidden layer, optional, default as 100
+	:type n_units: int
+	:param dropout: Dropout rate of the dropout process, optional, default as 0.1
+	:type dropout: float
+	"""
 
         model = Sequential()
 
@@ -52,7 +73,16 @@ class build_MLP(object):
         return model
 
     def deep(self, n_units=100, dropout=0.1, n_layers=5):
+	"""
+	deep model with multiple hidden layers with the same numer of nerons at each layer
 
+	:param n_units: Number of the nerons of each hidden layer, optional, default as 100
+	:type n_units: int
+	:param dropout: Dropout rate of the dropout process, optional, default as 0.1
+	:type dropout: float
+	:param n_layers: Number of the hidden layers emsembled by perceptrons, optional, default as 5
+	:type n_layers: int
+	"""
         model = Sequential()
 
         # Add Dense layer with 100 units

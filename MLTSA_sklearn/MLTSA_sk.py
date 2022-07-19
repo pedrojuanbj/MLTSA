@@ -12,10 +12,13 @@ def MLTSA(data, ans, model, drop_mode="Average", data_mode="Normal"):
     :type data: list
     :param ans: Outcomes for each sample on "data". Shape must be (samples)
     :type ans: list
-    :param model:
-    :param drop_mode:
-    :param data_mode:
-    :return:
+    :param model: Trained models used for prediction in the MLTSA process
+    :type model: sklearn model class object
+    :param drop_mode: flag indicating how to calculate the accuracy drop, optional, default as 'Average'
+    :type drop_mode: str
+    :param data_mode: flag indicating different input data structures, optional, default as 'Normal'
+    :type data_mode: str
+    :return: accuracy drop, shape as (n_features, n_samples)
 
     """
 
@@ -23,27 +26,36 @@ def MLTSA(data, ans, model, drop_mode="Average", data_mode="Normal"):
         data = data[:, :-1, :]
 
     # Calculating the global means
-    means_per_sim = np.mean(data.T, axis=0)
-    gmeans = np.mean(means_per_sim, axis=1)
-    temp_sim_data = np.copy(data)
+    means_per_sim = np.mean(data.T, axis=0) # (n_features, n_samples)
+    gmeans = np.mean(means_per_sim, axis=1) # (n_features)
+    temp_sim_data = np.copy(data) # (N_samples, n_features, n_steps)
+    #DEBUG
     # print(temp_sim_data.shape)
 
     # Swapping the values and predicting for the FR
     FR = []
-    for y, data in tqdm(enumerate(temp_sim_data)):
+    for y, data in tqdm(enumerate(temp_sim_data)): # Looping through different samples
+	# y: index of temp_sim_data for each data in temp_sim_data
+	# data: One term of data in temp_sim_data array #TODO: Change 'data' to other names since it duplicates with input
         mean_sim = []
-        for n, mean in enumerate(gmeans):
-            tmp_dat = np.copy(data)
+        for n, mean in enumerate(gmeans): # Looping through different features
+	# n : index of gmeans for different features
+	# mean: global mean of each feature
+            tmp_dat = np.copy(data) # (n_features, n_steps)
+	    #DEBUG
             # print(tmp_dat.shape)
-            tmp_dat[n ,:] = mean
+            tmp_dat[n ,:] = mean # CORE ACTION: SWAPPING # Change the nth features to global mean value
+	    #DEBUG
             # print(tmp_dat.T.shape)
-            yy = model.predict(tmp_dat.T)
-            res = yy == ans[y]
-            mean_sim.append(res)
-        FR.append(mean_sim)
-
+            yy = model.predict(tmp_dat.T) # shape: (n_steps, 1)
+	    # No need to decode here since do not need to encode the labels at first stage, sklearn do everything already.
+            res = yy == ans[y] # Shape: (n_steps, 1)
+            mean_sim.append(res) # At end of the loop, shape as (n_features, n_steps, 1)
+        FR.append(mean_sim) # At end of the loop, shape as (n_samples, n_features, n_steps, 1)
+    #DEBUG
     #print(np.array(FR).shape)
 
+    #TODO: Fix the median, which is not in functionality now.
     if drop_mode == "Median":
         median = np.median(np.array(FR).T, axis=0)
         median = np.median(median, axis=0)
@@ -55,10 +67,10 @@ def MLTSA(data, ans, model, drop_mode="Average", data_mode="Normal"):
 
 
     if drop_mode == "Average":
-        fr_per_sim = np.mean(np.array(FR).T, axis=0)
-        fr = np.mean(fr_per_sim, axis=1)
+        fr_per_sim = np.mean(np.array(FR).T, axis=0) # Shape: (n_steps, n_features, n_samples) (The dim 0 erased)
+        fr = np.mean(fr_per_sim, axis=1) # Shape: (n_features, n_samples)
 
-    return fr
+    return fr #(n_features, n_samples)
 
 
 def MLTSA_Plot(FR, dataset_og, pots, errorbar=True):
