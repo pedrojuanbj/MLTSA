@@ -1,3 +1,5 @@
 """Data loading and serialization interfaces for mltsa."""
 
-__all__: list[str] = []
+from . import h5, schema
+
+__all__ = ["h5", "schema"]

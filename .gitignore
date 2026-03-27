@@ -2,6 +2,8 @@ MLTSA_datasets/TwoD_pot/src/__pycache__/
 MLTSA_datasets/TwoD_pot/__pycache__/
 __pycache__/
 .pytest_cache/
+.pytest_tmp/
+.test_tmp/
 .venv/
 venv/
 .tmp/
