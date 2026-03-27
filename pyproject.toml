@@ -26,6 +26,7 @@ dependencies = [
   "h5py>=3.10",
   "numpy>=1.24",
   "scikit-learn>=1.4",
+  "torch>=2.11",
 ]
 
 [project.optional-dependencies]
