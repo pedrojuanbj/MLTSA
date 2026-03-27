@@ -1,34 +1,60 @@
-#############################################################
-MLTSA: Machine Learning Transition State Analysis repository
-#############################################################
+##########################################
+mltsa: Modern Package Skeleton for MLTSA
+##########################################
 
-************
-Introduction
-************
+``mltsa`` is the new public package name for the next breaking release of
+Machine Learning Transition State Analysis. This milestone introduces a modern
+``src/``-layout foundation so the project can grow into a cleaner, better
+structured library without removing the historical research code immediately.
 
-This is a Python package to apply the MLTSA approach for relevant CV identification on Molecular Dynamics data using both Sklearn and TensorFlow modules.It also includes both a suite of 1D Potential Analytical model feature generation module for light testing and a suite of different 2D potential shapes (Spiral, Z-shaped) generation as well as the posterior feature generation by 1D projections of the 2D data. In this package you will find: 
+********
+Overview
+********
 
-- Data Generation Module (**MLTSA_datasets**) : Contains files with the easy to call 1D/2D/MD examples to generate data or play around with it as tests for the approach.
+The current repository now has a dedicated package root at ``src/mltsa`` with
+room for the next-generation API:
 
-- Scikit-Learn-based ML models and Feature Reduction module (**MLTSA_sklearn**) : Contains the Scikit-Learn integrated functions to apply MLTSA on data.
+- ``mltsa.io`` for data loading, serialization, and external data interfaces
+- ``mltsa.synthetic`` for synthetic datasets and benchmark generators
+- ``mltsa.models`` for model abstractions and training entry points
+- ``mltsa.explain`` for explainability, attribution, and diagnostics
+- ``mltsa.md`` for molecular dynamics-specific workflows
+- ``mltsa.cli`` for command-line interfaces
+- ``mltsa.utils`` for small shared helpers
 
-- TensorFlow-based ML models and Feature Reduction module (**MLTSA_tensorflow**): Contains the set of functions and different models built on TensorFlow to apply MLTSA on data.
-
-*****
-Usage
-*****
-
-- Example OneD
-- Example TwoD
-- Example Train
-- Example MLTSA
+The scientific implementation will be migrated into this structure over future
+milestones. For now, the package provides a stable import target, version
+metadata, a minimal CLI entry point, and a clean testing and packaging setup.
 
 ************
 Installation
 ************
 
-To use MLTSA, first install it using pip:
+For local development:
 
 .. code-block:: console
 
-    (.venv) $ pip install MLTSA
+   pip install -e ".[test]"
+
+*****
+Usage
+*****
+
+.. code-block:: python
+
+   import mltsa
+
+   print(mltsa.__version__)
+
+.. code-block:: console
+
+   mltsa --version
+
+**************
+Migration Note
+**************
+
+Legacy packages such as ``MLTSA_datasets``, ``MLTSA_sklearn``, and
+``MLTSA_tensorflow`` remain in the repository during the migration. They are no
+longer the intended main public API for new work. New development should target
+the ``mltsa`` package under ``src/``.
