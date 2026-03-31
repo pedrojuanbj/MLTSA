@@ -61,10 +61,10 @@ Usage
    from mltsa.synthetic import make_1d_dataset
 
    dataset = make_1d_dataset(
-       n_trajectories=64,
-       n_steps=64,
-       n_features=12,
-       n_relevant=3,
+       n_trajectories=64,  # number of trajectories to generate
+       n_steps=64,  # time steps per trajectory
+       n_features=12,  # total observed features
+       n_relevant=3,  # hidden ground-truth relevant features
    )
    dataset.save("synthetic_1d.h5", overwrite=True)
 
@@ -78,19 +78,19 @@ Usage
    from mltsa.synthetic import load_dataset
 
    dataset = load_dataset("synthetic_1d.h5")
-   X = dataset.X.reshape(dataset.n_trajectories, -1)
+   X = dataset.X.reshape(dataset.n_trajectories, -1)  # flatten time for a simple baseline model
    feature_names = [
        f"{name}@t{step:03d}"
        for step in range(dataset.n_steps)
        for name in dataset.feature_names
    ]
 
-   model = get_model("random_forest", n_estimators=200)
+   model = get_model("random_forest", n_estimators=200)  # tree model with native importance
    model.fit(X, dataset.y)
 
    result = analyze(
        model,
-       method="native",
+       method="native",  # no X/y needed for native tree importance
        feature_names=feature_names,
    )
    print(result.feature_names[result.ranked_indices[0]])
@@ -107,37 +107,36 @@ Usage
        run_mltsa,
    )
 
+   trajectory_paths = ["traj1.dcd", "traj2.dcd"]  # trajectories to process
+
    label_trajectories(
-       trajectory_paths=["replica_0001.dcd", "replica_0002.dcd"],
-       topology="topology.pdb",
-       h5_path="md_dataset.h5",
+       trajectory_paths=trajectory_paths,
+       topology="topology.pdb",  # shared topology file
+       h5_path="md_dataset.h5",  # output HDF5 database
        experiment_id="labels",
        rule="sum_distances",
-       selection_pairs=[("index 10", "index 220")],
-       lower_threshold=0.4,
-       upper_threshold=0.8,
-       window_size=25,
+       selection_pairs=[("index 10", "index 220")],  # minimal labeling rule
+       lower_threshold=0.4,  # IN threshold
+       upper_threshold=0.8,  # OUT threshold
+       window_size=25,  # only the final 25 frames are used for labeling
    )
 
    featurize_dataset(
        h5_path="md_dataset.h5",
        feature_set="closest",
-       feature_type="closest_residue_distances",
+       feature_type="closest_residue_distances",  # generate one named CV family
        label_experiment_id="labels",
    )
 
    md_dataset = load_md_dataset("md_dataset.h5", "closest")
    result = run_mltsa(
-       "md_dataset.h5",
-       "closest",
+       "md_dataset.h5",  # MD feature database
+       "closest",  # feature set to analyze
        model="random_forest",
-       results_h5_path="md_results.h5",
-       experiment_id="rf_native",
    )
 
    print(md_dataset.X.shape)
-   print(result.training_score)
-   print(result.explanation.feature_names[result.explanation.ranked_indices[0]])
+   print(result.training_score)  # quick training score on the loaded feature set
 
 CLI usage
 =========
@@ -165,8 +164,8 @@ The initial documentation baseline lives under ``docs/source`` and includes:
 - CLI usage
 - an upgrade guide from the historical repository structure
 
-Example notebooks now live under ``notebooks/`` with topic folders for
-synthetic, MD, and legacy material.
+Example notebooks now live under ``notebooks/`` as a numbered tutorial series,
+with older material preserved under ``notebooks/legacy/``.
 
 **************
 Migration Note

@@ -1,23 +1,35 @@
 Notebooks
 =========
 
-The repository notebooks now live under the top-level ``notebooks/`` directory
-with a small topic-based structure.
+The active tutorials now live directly under the top-level ``notebooks/``
+directory.
 
-Layout
-------
+Current tutorials
+-----------------
 
-- ``notebooks/synthetic/`` contains synthetic-data examples
-- ``notebooks/md/`` contains MD-focused examples
+- ``01_synthetic_1d_data_generation_the_basics.ipynb``
+- ``02_synthetic_2d_data_generation_added_complexity_through_ice_cream.ipynb``
+- ``03_mltsa_for_dummies.ipynb``
+- ``04_mltsa_on_real_data_placeholder.ipynb`` (placeholder notebook using
+  public precomputed workshop CVs)
+- ``05_exploring_models.ipynb``
+- ``06_shap_compatible.ipynb``
+
+Generated datasets and result files created while running the notebooks are
+written to ``notebooks/_generated/``.
+
+Legacy material
+---------------
+
 - ``notebooks/legacy/`` contains older exploratory notebooks kept for reference
 
 Migration note
 --------------
 
-Most of the existing notebooks still use historical imports such as
+Most notebooks in ``notebooks/legacy/`` still use historical imports such as
 ``MLTSA_datasets`` or ``MLTSA_tensorflow``. They are preserved as reference
-material during the package migration and will be rewritten incrementally to
-use ``mltsa`` directly.
+material during the package migration, but new examples should use ``mltsa``
+directly.
 
 For new examples, prefer the Python APIs described in the package guides and
 keep notebooks small and task-focused.
