@@ -38,6 +38,7 @@ md = [
 
 [project.scripts]
 mltsa = "mltsa.cli:main"
+mltsa-md = "mltsa.cli.md:main"
 
 [project.urls]
 Documentation = "https://mltsa.readthedocs.io/en/latest/"
