@@ -1,3 +1,5 @@
 """Molecular dynamics specific workflows for mltsa."""
 
-__all__: list[str] = []
+from .label import LabelingResult, TrajectoryLabelEntry, label_trajectories
+
+__all__ = ["LabelingResult", "TrajectoryLabelEntry", "label_trajectories"]
