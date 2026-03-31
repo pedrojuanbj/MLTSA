@@ -53,27 +53,103 @@ For the MD workflow:
 Usage
 *****
 
+1. Synthetic time-series data generation for relevant feature identification
+===========================================================================
+
 .. code-block:: python
 
-   from mltsa.models import get_model
    from mltsa.synthetic import make_1d_dataset
 
-   dataset = make_1d_dataset(n_trajectories=16)
-   model = get_model("random_forest", n_estimators=100)
+   dataset = make_1d_dataset(
+       n_trajectories=64,
+       n_steps=64,
+       n_features=12,
+       n_relevant=3,
+   )
+   dataset.save("synthetic_1d.h5", overwrite=True)
 
-   model.fit(dataset.X.reshape(dataset.n_trajectories, -1), dataset.y)
+2. Running MLTSA on the saved synthetic HDF5 dataset
+====================================================
 
 .. code-block:: python
 
-   from mltsa.md import run_mltsa
+   from mltsa.explain import analyze
+   from mltsa.models import get_model
+   from mltsa.synthetic import load_dataset
 
-   result = run_mltsa("md_dataset.h5", "closest", model="random_forest")
+   dataset = load_dataset("synthetic_1d.h5")
+   X = dataset.X.reshape(dataset.n_trajectories, -1)
+   feature_names = [
+       f"{name}@t{step:03d}"
+       for step in range(dataset.n_steps)
+       for name in dataset.feature_names
+   ]
+
+   model = get_model("random_forest", n_estimators=200)
+   model.fit(X, dataset.y)
+
+   result = analyze(
+       model,
+       method="native",
+       feature_names=feature_names,
+   )
+   print(result.feature_names[result.ranked_indices[0]])
+
+3. Molecular Dynamics CV generation, loading, and MLTSA analysis
+================================================================
+
+.. code-block:: python
+
+   from mltsa.md import (
+       featurize_dataset,
+       label_trajectories,
+       load_dataset as load_md_dataset,
+       run_mltsa,
+   )
+
+   label_trajectories(
+       trajectory_paths=["replica_0001.dcd", "replica_0002.dcd"],
+       topology="topology.pdb",
+       h5_path="md_dataset.h5",
+       experiment_id="labels",
+       rule="sum_distances",
+       selection_pairs=[("index 10", "index 220")],
+       lower_threshold=0.4,
+       upper_threshold=0.8,
+       window_size=25,
+   )
+
+   featurize_dataset(
+       h5_path="md_dataset.h5",
+       feature_set="closest",
+       feature_type="closest_residue_distances",
+       label_experiment_id="labels",
+   )
+
+   md_dataset = load_md_dataset("md_dataset.h5", "closest")
+   result = run_mltsa(
+       "md_dataset.h5",
+       "closest",
+       model="random_forest",
+       results_h5_path="md_results.h5",
+       experiment_id="rf_native",
+   )
+
+   print(md_dataset.X.shape)
    print(result.training_score)
+   print(result.explanation.feature_names[result.explanation.ranked_indices[0]])
+
+CLI usage
+=========
+
+The current CLI directly supports the MD HDF5 workflow and is useful once you
+already have an HDF5 CV dataset prepared.
 
 .. code-block:: console
 
    mltsa --version
    mltsa-md --help
+   mltsa-md analyze --h5 md_dataset.h5 --feature-set closest --model random_forest --explain native --results-h5 md_results.h5
 
 *************
 Documentation
