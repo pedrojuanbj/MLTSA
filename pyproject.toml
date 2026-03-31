@@ -31,6 +31,10 @@ dependencies = [
 
 [project.optional-dependencies]
 test = ["pytest>=8,<10"]
+md = [
+  "matplotlib>=3.8",
+  "mdtraj>=1.10",
+]
 
 [project.scripts]
 mltsa = "mltsa.cli:main"
