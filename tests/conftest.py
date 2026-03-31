@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import shutil
 import sys
-import tempfile
+import uuid
 from pathlib import Path
 
 import pytest
@@ -22,7 +22,8 @@ def workspace_tmp_dir() -> Path:
     base_dir = Path(__file__).resolve().parents[1] / ".test_tmp"
     base_dir.mkdir(exist_ok=True)
 
-    temp_dir = Path(tempfile.mkdtemp(prefix="mltsa-", dir=base_dir))
+    temp_dir = base_dir / f"mltsa-{uuid.uuid4().hex}"
+    temp_dir.mkdir()
     try:
         yield temp_dir
     finally:
