@@ -22,9 +22,10 @@ room for the next-generation API:
 - ``mltsa.cli`` for command-line interfaces
 - ``mltsa.utils`` for small shared helpers
 
-The scientific implementation will be migrated into this structure over future
-milestones. For now, the package provides a stable import target, version
-metadata, a minimal CLI entry point, and a clean testing and packaging setup.
+The scientific implementation is being migrated into this structure in
+incremental milestones. The repository now includes reusable HDF5 IO helpers,
+synthetic dataset lifecycles, model wrappers, explainability tools, MD
+labeling and featurization, MD analysis helpers, and thin CLI commands.
 
 ************
 Installation
@@ -34,7 +35,19 @@ For local development:
 
 .. code-block:: console
 
+   pip install -e .
+
+For development with tests:
+
+.. code-block:: console
+
    pip install -e ".[test]"
+
+For the MD workflow:
+
+.. code-block:: console
+
+   pip install -e ".[test,md]"
 
 *****
 Usage
@@ -42,13 +55,42 @@ Usage
 
 .. code-block:: python
 
-   import mltsa
+   from mltsa.models import get_model
+   from mltsa.synthetic import make_1d_dataset
 
-   print(mltsa.__version__)
+   dataset = make_1d_dataset(n_trajectories=16)
+   model = get_model("random_forest", n_estimators=100)
+
+   model.fit(dataset.X.reshape(dataset.n_trajectories, -1), dataset.y)
+
+.. code-block:: python
+
+   from mltsa.md import run_mltsa
+
+   result = run_mltsa("md_dataset.h5", "closest", model="random_forest")
+   print(result.training_score)
 
 .. code-block:: console
 
    mltsa --version
+   mltsa-md --help
+
+*************
+Documentation
+*************
+
+The initial documentation baseline lives under ``docs/source`` and includes:
+
+- installation notes
+- package overview
+- synthetic dataset usage
+- models and explainability
+- MD workflow documentation
+- CLI usage
+- an upgrade guide from the historical repository structure
+
+Example notebooks now live under ``notebooks/`` with topic folders for
+synthetic, MD, and legacy material.
 
 **************
 Migration Note

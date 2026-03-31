@@ -1,45 +1,20 @@
-.. MLTSA documentation master file, created by
-   sphinx-quickstart on Tue Dec 28 19:09:50 2021.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
+mltsa Documentation
+===================
 
-Welcome to MLTSA's documentation!
-=================================
-
-MLTSA is a python-based package which enables users to apply the Machine Learning Transition State Analysis
-from https://doi.org/10.1021/acs.jctc.1c00924 to any given data with an array of ML models, as well as generating an
-analytical model on demand for detecting relevant features in a dataset.
-
+``mltsa`` is the new public package for Machine Learning Transition State
+Analysis. The current documentation focuses on the modern ``src/mltsa`` API,
+the reusable HDF5 workflows, and the migration path from the historical
+repository layout.
 
 .. toctree::
-   :maxdepth: 1
-   :caption: Contents:
+   :maxdepth: 2
+   :caption: Guide
 
-   summary.rst
-
-   examples.rst
-
-   onedfunctions.rst
-
-   trajanalysis.rst
-
-   sklearnfunctions.rst
-
-   tffunctions.rst
-
-   twodpots.rst
-
-   twodpots_source.rst
-
-.. include:: ../../README.rst
-
-
-.. note::
-   This project is under active development, do not expect a stable version, code is provided as is.
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+   installation
+   overview
+   synthetic
+   models_explainability
+   md_workflow
+   cli_usage
+   notebooks
+   upgrade_guide
