@@ -54,7 +54,7 @@ Usage
 *****
 
 1. Synthetic time-series data generation for relevant feature identification
-===========================================================================
+=============================================================================
 
 .. code-block:: python
 
@@ -69,7 +69,7 @@ Usage
    dataset.save("synthetic_1d.h5", overwrite=True)
 
 2. Running MLTSA on the saved synthetic HDF5 dataset
-====================================================
+=====================================================
 
 .. code-block:: python
 
@@ -96,7 +96,7 @@ Usage
    print(result.feature_names[result.ranked_indices[0]])
 
 3. Molecular Dynamics CV generation, loading, and MLTSA analysis
-================================================================
+=================================================================
 
 .. code-block:: python
 
